@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.w),
-          color: mybool ? MyThemeData.appyellow : MyThemeData.appblue,
+          color: mybool ? MyThemeData.primaryColor : MyThemeData.appblue,
         ),
         child: Text(title),
       ),

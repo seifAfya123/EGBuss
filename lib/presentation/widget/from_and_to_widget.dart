@@ -22,14 +22,8 @@ class FromAndToWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(7.w),
         color: MyThemeData.appblue,
       ),
-      margin: EdgeInsets.symmetric(
-        horizontal: 5.w,
-        vertical: 2.h,
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: 5.w,
-        // vertical: 2.h,
-      ),
+      margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 2.h),
+      padding: EdgeInsets.symmetric(horizontal: 5.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -42,12 +36,6 @@ class FromAndToWidget extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 2.h),
             child: textfeildWidget,
           ),
-          // CustomeTextFeild(
-          //   textController: citynameController,
-          //   feildText: "اسم المحافطه",
-          //   withShadow: false,
-          //   userInputType: TextInputType.name,
-          // ),
           DefaultButtonText(text: city),
         ],
       ),

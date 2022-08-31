@@ -30,7 +30,6 @@ class AppRouter {
       //   String arguments = settings.arguments as String;
       //   return MaterialPageRoute(
       //       builder: (_) => SellItemScreen(code: arguments));
-      
       default:
         return null;
     }

@@ -23,7 +23,6 @@ class LeavingAndArrivingCard extends StatelessWidget {
       ),
       padding: EdgeInsets.symmetric(
         horizontal: 5.w,
-        // vertical: 2.h,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -31,8 +30,7 @@ class LeavingAndArrivingCard extends StatelessWidget {
           Column(
             children: [
               Text(isArriving ? "وقت المغادره" : "وقت الوصول"),
-              // DateTime.now().day.toString()
-              DefaultButtonText(text: "الثلاثاء 14/5")
+              const DefaultButtonText(text: "الثلاثاء 14/5")
             ],
           ),
           SizedBox(width: 2.w),

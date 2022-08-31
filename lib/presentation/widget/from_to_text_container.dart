@@ -16,8 +16,6 @@ class FromToTextContainer extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
-      // decoration: const BoxDecoration(
-      // ),
       child: Column(
         children: const [
           Text("من : القاهره"),

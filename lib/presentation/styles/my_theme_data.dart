@@ -2,22 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class MyThemeData {
-  // static const Color primaryColor = Color.fromARGB(255, 183, 147, 95);
-  static const Color primaryColor = Color(0xffFDAF01);
-  static const Color dprimaryColor = Color.fromARGB(255, 20, 26, 46);
-  static const Color dAccentColor = Colors.orange;
-  static const Color textColor = Colors.black;
-
-  // static const Color titleColor = Colors.black;
-  static const Color appyellow = Color(0xffFDAF01); //ko7ly
-  static const Color appblue = Color(0xff019DFD); //ko7ly
-
-  static const Color backgroundcolor = Color(0xffF9FAFC);
-  static const Color mywhite = Color(0xffffffff);
+// light theme colors 
+  static const Color seatNumberColor = Color(0xff9A9174); //kind of yellow
+  static const Color mov = Color(0xffC21EEB); //kind of mov
+  static const Color appGery = Color(0xffE9E9E9); //kind of grey
+  static const Color appyellow = Color(0xffEBB81E); //yellow
+  static const Color appblue = Color(0xff06ACD4); // blue
+  static const Color appDarkblue = Color(0xff464362); //ko7ly
+  static const Color backGroundColor = Color(0xffF7F7F7); // dirty white
+  static const Color mywhite = Color(0xffffffff); // white 
+// Dark theme colors 
+  static const Color dseatNumberColor = Color(0xff9A9174); //kind of yellow
+  static const Color dmov = Color(0xffC21EEB); //kind of mov
+  static const Color dappGery = Color(0xffE9E9E9); //kind of grey
+  static const Color dappyellow = Color(0xffEBB81E); //yellow
+  static const Color dappblue = Color(0xff06ACD4); // blue
+  static const Color dappDarkblue = Color(0xff464362); //ko7ly
+  static const Color dbackGroundColor = Color(0xffF7F7F7); // dirty white
+  static const Color dmywhite = Color(0xffffffff); // white 
 
   ///////////////////////////////////////////////////////////
   static ThemeData lightTheme = ThemeData(
-    scaffoldBackgroundColor: backgroundcolor,
+    scaffoldBackgroundColor: backGroundColor,
     iconTheme: const IconThemeData(color: appyellow),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: mywhite, foregroundColor: appyellow),
@@ -46,21 +52,21 @@ class MyThemeData {
         selectedIconTheme: IconThemeData(color: Colors.black),
         unselectedIconTheme: IconThemeData(color: Colors.white)),
     progressIndicatorTheme:
-        const ProgressIndicatorThemeData(color: MyThemeData.primaryColor),
-    primaryColor: MyThemeData.primaryColor,
+        const ProgressIndicatorThemeData(color: appyellow),
+    primaryColor: appyellow,
     textTheme: TextTheme(
       headline1: TextStyle(
-          fontSize: 18.sp, color: textColor, fontWeight: FontWeight.bold),
+          fontSize: 18.sp, color: appDarkblue, fontWeight: FontWeight.bold),
       headline2: TextStyle(fontSize: 18.sp, color: appyellow),
       headline6: TextStyle(fontSize: 15.sp, color: mywhite),
       bodyText1: TextStyle(
-          fontSize: 14.sp, color: textColor, fontWeight: FontWeight.bold),
-      bodyText2: TextStyle(fontSize: 14.sp, color: textColor),
+          fontSize: 14.sp, color: appDarkblue, fontWeight: FontWeight.bold),
+      bodyText2: TextStyle(fontSize: 14.sp, color: appDarkblue),
       subtitle1: TextStyle(
-          fontSize: 18.sp, color: textColor, fontWeight: FontWeight.bold),
+          fontSize: 18.sp, color: appDarkblue, fontWeight: FontWeight.bold),
       subtitle2: TextStyle(
         fontSize: 14.sp,
-        color: textColor.withOpacity(0.5),
+        color: appDarkblue.withOpacity(0.5),
       ),
     ),
   );

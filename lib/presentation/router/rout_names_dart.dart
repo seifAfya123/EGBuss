@@ -16,4 +16,5 @@ class RoutNamesDart {
   static const String rContactUsScreen = "rContactUsScreen";
   static const String rNotificationsScreen = "rNotificationsScreen";
   static const String rNotificationDetailsScreen = "rNotificationDetailsScreen";
+  static const String rRateDriver = "rRateDriver";
 }

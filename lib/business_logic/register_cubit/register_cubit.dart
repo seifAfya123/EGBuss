@@ -11,8 +11,6 @@ class RegisterCubit extends Cubit<RegisterState> {
   registerUser(UserModel user) async {
     emit(LoadingState());
     await Future.delayed(const Duration(milliseconds: 1000), () {});
-    print(user.phone);
-    print(user.password);
     emit(SuccessState());
   }
 }

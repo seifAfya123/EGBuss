@@ -26,7 +26,7 @@ class CustomElevatedButton extends StatelessWidget {
         primary: buttonColor,
         side: BorderSide(
           color:
-              isSelected ?? false ? MyThemeData.textColor : Colors.transparent,
+              isSelected ?? false ? MyThemeData.appDarkblue : Colors.transparent,
           width: 0.5.w,
         ),
       ),
