@@ -92,6 +92,9 @@ class SeatReservation extends StatelessWidget {
             Expanded(
               child: BlocBuilder<SeatReserverCubit, SeatReserverState>(
                 builder: (context, state) {
+                  if (state is ChangeSeateState) {
+                    
+                  }
                   SeatReserverCubit mycubit =
                       BlocProvider.of<SeatReserverCubit>(context);
                   return ListView.builder(
