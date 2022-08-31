@@ -35,7 +35,7 @@ class MyThemeData {
         ),
       ),
     ),
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: appblue,
       centerTitle: true,
     ),

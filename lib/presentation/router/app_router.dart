@@ -26,12 +26,11 @@ class AppRouter {
       case RoutNamesDart.rAvailableTripsScreen:
         return MaterialPageRoute(builder: (_) => AvailableTripsScreen());
 
-      //
       // case RoutNamesDart.rAddItemSceen:
       //   String arguments = settings.arguments as String;
       //   return MaterialPageRoute(
       //       builder: (_) => SellItemScreen(code: arguments));
-      //
+      
       default:
         return null;
     }

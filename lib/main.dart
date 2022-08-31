@@ -32,39 +32,12 @@ Future<void> main() async {
   cash = CacheHelper.getDataFromSharedPreference(key: AppStrings.theme) ??
       AppStrings.light;
   CacheHelper.saveDataSharedPreference(key: AppStrings.theme, value: cash);
-  CacheHelper.saveDataSharedPreference(
-    key: AppStrings.fatoraNumber,
-    value:
-        CacheHelper.getDataFromSharedPreference(key: AppStrings.fatoraNumber) ??
-            1,
-  );
 
-  // Bloc.transformer = (events, mapper) {
-  //   runApp(EasyLocalization(
-  //     supportedLocales: const [arabicLocal, englishLocal],
-  //     path: assetPathLocalizations,
-  //     child: Phoenix(child: MyApp(appRouter: AppRouter())),
-  //   ));
-  //   return events;
-  // };
-  // Bloc.observer = MyBlocObserver();
-
-  // =CustomBlocObserver(runApp(EasyLocalization(
-  //   supportedLocales: const [arabicLocal, englishLocal],
-  //   path: assetPathLocalizations,
-  //   child: Phoenix(child: MyApp(appRouter: AppRouter())),
-  // )));
-  
-  BlocOverrides.runZoned(
-    () async {
-      runApp(EasyLocalization(
-        supportedLocales: const [arabicLocal, englishLocal],
-        path: assetPathLocalizations,
-        child: Phoenix(child: MyApp(appRouter: AppRouter())),
-      ));
-    },
-    blocObserver: MyBlocObserver(),
-  );
+  runApp(EasyLocalization(
+    supportedLocales: const [arabicLocal, englishLocal],
+    path: assetPathLocalizations,
+    child: Phoenix(child: MyApp(appRouter: AppRouter())),
+  ));
 }
 
 class MyApp extends StatefulWidget {

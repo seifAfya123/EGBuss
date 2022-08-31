@@ -5,12 +5,14 @@ import 'package:http/http.dart' as http;
 import 'package:testapp/constants/end_points.dart';
 
 class HttpHelper {
+  static String httpBaseUrl = baseURL;
+
   static dynamic postData({
     required String endPoint,
     required Map<String, dynamic> body,
     Map<String, dynamic>? query,
   }) async {
-    Uri uri = Uri.https(baseURL, endPoint);
+    Uri uri = Uri.https(httpBaseUrl, endPoint);
     final response = await http.post(
       uri,
       headers: <String, String>{
@@ -26,7 +28,7 @@ class HttpHelper {
     required Map<String, dynamic> query,
     String? token,
   }) async {
-    var uri = Uri.http(baseURL, endPoint);
+    var uri = Uri.http(httpBaseUrl, endPoint);
     final uriResponse = await http.get(
       uri,
       headers: token != null
@@ -35,5 +37,6 @@ class HttpHelper {
             }
           : {},
     );
+    return uriResponse;
   }
 }
