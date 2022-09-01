@@ -5,6 +5,7 @@ import 'package:testapp/presentation/widget/custom_cicular_image.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/default_button_text.dart';
 import 'package:sizer/sizer.dart';
+import 'package:testapp/presentation/widget/drawer.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -13,8 +14,9 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: MyDrawer(),
         appBar: AppBar(
-          title: Text("بيانات الل"),
+          title: const Text("الملف الشخصى"),
         ),
         body: Center(
           child: Column(
