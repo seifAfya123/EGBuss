@@ -8,11 +8,13 @@ class DrawerItem extends StatelessWidget {
   String text;
   Icon icons;
   String route;
+  Color color;
   DrawerItem({
     Key? key,
     required this.text,
     required this.icons,
     required this.route,
+    required this.color,
   }) : super(key: key);
 
   @override
@@ -30,7 +32,7 @@ class DrawerItem extends StatelessWidget {
             padding: EdgeInsets.all(3.w),
             child: Icon(
               icons.icon,
-              color: MyThemeData.dappblue,
+              color: color,
             ),
           ),
           Text(text)

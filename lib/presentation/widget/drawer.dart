@@ -22,15 +22,18 @@ class MyDrawer extends StatelessWidget {
         DrawerItem(
             text: 'حجز',
             route: RoutNamesDart.rHomeScreen,
-            icons: const Icon(Icons.history)),
+            icons: const Icon(Icons.history),
+            color: MyThemeData.dappblue),
         DrawerItem(
             text: 'الملف الشخصى',
             route: RoutNamesDart.rProfileScreen,
-            icons: const Icon(Icons.account_circle_outlined)),
+            icons: const Icon(Icons.account_circle_outlined),
+            color: MyThemeData.dappblue),
         DrawerItem(
             text: 'الأشعارات',
             route: '',
-            icons: const Icon(Icons.notifications_none)),
+            icons: const Icon(Icons.notifications_none),
+            color: MyThemeData.dappblue),
         InkWell(
           onTap: () {},
           child: Row(
@@ -55,7 +58,8 @@ class MyDrawer extends StatelessWidget {
         DrawerItem(
             text: 'تسجيل خروج',
             route: RoutNamesDart.rLoginScreen,
-            icons: const Icon(Icons.logout)),
+            icons: const Icon(Icons.logout),
+            color: MyThemeData.dappblue),
       ],
     ));
   }

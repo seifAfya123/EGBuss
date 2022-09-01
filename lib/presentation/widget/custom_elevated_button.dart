@@ -23,10 +23,11 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: otpressFunction,
       style: ElevatedButton.styleFrom(
-        primary: buttonColor,
+        backgroundColor: buttonColor,
         side: BorderSide(
-          color:
-              isSelected ?? false ? MyThemeData.appDarkblue : Colors.transparent,
+          color: isSelected ?? false
+              ? MyThemeData.appDarkblue
+              : Colors.transparent,
           width: 0.5.w,
         ),
       ),
