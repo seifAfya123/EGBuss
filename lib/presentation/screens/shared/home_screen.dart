@@ -127,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.h),
               child: CustomElevatedButton(
-                myWidgets: const [DefaultButtonText(text: "الرحلات المتاحه")],
+                myWidgets: const DefaultButtonText(text: "الرحلات المتاحه"),
                 otpressFunction: () {
                   Navigator.pushNamed(
                       context, RoutNamesDart.rAvailableTripsScreen);

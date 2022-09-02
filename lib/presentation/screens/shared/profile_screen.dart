@@ -21,7 +21,9 @@ class ProfileScreen extends StatelessWidget {
           title: const Text("الملف الشخصي"),
           actions: [
             InkWell(
-              onTap: (() {}),
+              onTap: (() {
+                Navigator.pushNamed(context, RoutNamesDart.rEditProfileScreen);
+              }),
               child: Padding(
                 padding: EdgeInsets.all(5.w),
                 child: const Icon(Icons.edit),

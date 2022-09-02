@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/generated/i18n.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  final List<Widget> myWidgets;
+  final Widget myWidgets;
   final VoidCallback otpressFunction;
   final MainAxisAlignment? mainAxisAlignment;
   final Color? buttonColor;
@@ -20,21 +21,20 @@ class CustomElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: otpressFunction,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: buttonColor,
-        side: BorderSide(
-          color: isSelected ?? false
-              ? MyThemeData.appDarkblue
-              : Colors.transparent,
-          width: 0.5.w,
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.center,
-        children: myWidgets,
-      ),
+    return SizedBox(
+      height: 10.5.h,
+      child: ElevatedButton(
+          onPressed: otpressFunction,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: buttonColor,
+            side: BorderSide(
+              color: isSelected ?? false
+                  ? MyThemeData.appDarkblue
+                  : Colors.transparent,
+              width: 0.5.w,
+            ),
+          ),
+          child: myWidgets),
     );
   }
 }

@@ -63,9 +63,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 3.h),
                     CustomElevatedButton(
-                      myWidgets: const [
-                        DefaultButtonText(text: "تسجيل الدخول")
-                      ],
+                      myWidgets: const DefaultButtonText(text: "تسجيل الدخول"),
                       otpressFunction: () {
                         mycubit.loginUser(
                           UserModel(

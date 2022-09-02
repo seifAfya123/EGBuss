@@ -73,7 +73,7 @@ class AvailableTripsScreen extends StatelessWidget {
             ],
           ),
           CustomElevatedButton(
-            myWidgets: const [DefaultButtonText(text: "110 جنيه")],
+            myWidgets: const DefaultButtonText(text: "110 جنيه"),
             buttonColor: MyThemeData.appblue,
             otpressFunction: () {
               Navigator.pushNamed(context, RoutNamesDart.rSeatReservation);

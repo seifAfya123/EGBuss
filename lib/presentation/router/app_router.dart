@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/screens/shared/available_trips_screen.dart';
+import 'package:testapp/presentation/screens/shared/edit_profile_screen.dart';
 import 'package:testapp/presentation/screens/shared/home_screen.dart';
 import 'package:testapp/presentation/screens/shared/login_screen.dart';
 import 'package:testapp/presentation/screens/shared/profile_screen.dart';
@@ -21,6 +22,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => RegisterScreen());
       case RoutNamesDart.rProfileScreen:
         return MaterialPageRoute(builder: (_) => ProfileScreen());
+      case RoutNamesDart.rEditProfileScreen:
+        return MaterialPageRoute(builder: (_) => EditProfileScreen());
       case RoutNamesDart.rSeatReservation:
         return MaterialPageRoute(builder: (_) => SeatReservation());
       case RoutNamesDart.rAvailableTripsScreen:

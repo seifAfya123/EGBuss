@@ -85,7 +85,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 3.h),
                     CustomElevatedButton(
-                      myWidgets: const [DefaultButtonText(text: "انشاء حساب")],
+                      myWidgets: const DefaultButtonText(text: "انشاء حساب"),
                       otpressFunction: () {
                         mycubit.registerUser(
                           UserModel(

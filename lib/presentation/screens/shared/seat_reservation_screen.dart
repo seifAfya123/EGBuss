@@ -92,9 +92,7 @@ class SeatReservation extends StatelessWidget {
             Expanded(
               child: BlocBuilder<SeatReserverCubit, SeatReserverState>(
                 builder: (context, state) {
-                  if (state is ChangeSeateState) {
-                    
-                  }
+                  if (state is ChangeSeateState) {}
                   SeatReserverCubit mycubit =
                       BlocProvider.of<SeatReserverCubit>(context);
                   return ListView.builder(
@@ -112,7 +110,7 @@ class SeatReservation extends StatelessWidget {
               ),
             ),
             CustomElevatedButton(
-              myWidgets: const [DefaultButtonText(text: 'احجز الان')],
+              myWidgets: const DefaultButtonText(text: 'احجز الان'),
               otpressFunction: () {},
             ),
             SizedBox(height: 5.h)
