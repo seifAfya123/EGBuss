@@ -8,7 +8,7 @@ class PrivacyAndPolicy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: MyThemeData.appblue,
     ));
 
@@ -17,14 +17,10 @@ class PrivacyAndPolicy extends StatelessWidget {
         appBar: AppBar(
           title: Text("الامان و الخصوصيه"),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            BodyWhiteContainer(
-              bodyChild: Container(),
-            )
-          ],
+        body: Center(
+          child: BodyWhiteContainer(
+            bodyChild: Container(),
+          ),
         ),
       ),
     );

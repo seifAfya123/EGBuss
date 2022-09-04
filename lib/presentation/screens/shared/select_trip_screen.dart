@@ -29,68 +29,64 @@ class _SelectTripScreenState extends State<SelectTripScreen> {
         appBar: AppBar(
           title: Text("حجز"),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            BodyWhiteContainer(
-              bodyChild: Column(
-                children: [
-                  Expanded(
-                    child: Container(),
+        body: Center(
+          child: BodyWhiteContainer(
+            bodyChild: Column(
+              children: [
+                Expanded(
+                  child: Container(),
+                ),
+                Container(
+                  height: 9.h,
+                  padding: EdgeInsets.all(2.w),
+                  margin: EdgeInsets.only(top: 2.h),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7.w),
+                    color: MyThemeData.appblue,
                   ),
-                  Container(
-                    height: 9.h,
-                    padding: EdgeInsets.all(2.w),
-                    margin: EdgeInsets.only(top: 2.h),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(7.w),
-                      color: MyThemeData.appblue,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        tripType("ذهاب فقط", isOneWayTrip),
-                        tripType("ذهاب و عوده", !isOneWayTrip),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 3.h),
-                  Row(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const LeavingAndArrivingCard(isFrom: false),
-                      SizedBox(width: 3.w),
-                      const LeavingAndArrivingCard(isFrom: true),
+                      tripType("ذهاب فقط", isOneWayTrip),
+                      tripType("ذهاب و عوده", !isOneWayTrip),
                     ],
                   ),
-                  SizedBox(height: 3.h),
-                  AnimatedCrossFade(
-                    firstCurve: Curves.easeInCirc,
-                    firstChild: const Expanded(
-                        child: LeavingAndArrivingCard(isFrom: false)),
-                    secondChild: Row(
-                      children: [
-                        LeavingAndArrivingCard(isFrom: false),
-                        SizedBox(width: 3.w),
-                        LeavingAndArrivingCard(isFrom: false),
-                      ],
-                    ),
-                    crossFadeState: isOneWayTrip
-                        ? CrossFadeState.showFirst
-                        : CrossFadeState.showSecond,
-                    duration: const Duration(microseconds: 3500),
+                ),
+                SizedBox(height: 3.h),
+                Row(
+                  children: [
+                    const LeavingAndArrivingCard(isFrom: false),
+                    SizedBox(width: 3.w),
+                    const LeavingAndArrivingCard(isFrom: true),
+                  ],
+                ),
+                SizedBox(height: 3.h),
+                AnimatedCrossFade(
+                  firstCurve: Curves.easeInCirc,
+                  firstChild: const Expanded(
+                      child: LeavingAndArrivingCard(isFrom: false)),
+                  secondChild: Row(
+                    children: [
+                      LeavingAndArrivingCard(isFrom: false),
+                      SizedBox(width: 3.w),
+                      LeavingAndArrivingCard(isFrom: false),
+                    ],
                   ),
-                  SizedBox(height: 3.h),
-                  CustomElevatedButton(
-                    buttonColor: MyThemeData.appblue,
-                    myWidgets: const DefaultButtonText(text: "search"),
-                    otpressFunction: () {},
-                  ),
-                  SizedBox(height: 6.h),
-                ],
-              ),
+                  crossFadeState: isOneWayTrip
+                      ? CrossFadeState.showFirst
+                      : CrossFadeState.showSecond,
+                  duration: const Duration(microseconds: 3500),
+                ),
+                SizedBox(height: 3.h),
+                CustomElevatedButton(
+                  buttonColor: MyThemeData.appblue,
+                  myWidgets: const DefaultButtonText(text: "search"),
+                  otpressFunction: () {},
+                ),
+                SizedBox(height: 6.h),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

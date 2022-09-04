@@ -7,13 +7,11 @@ import 'package:testapp/presentation/widget/drawer_item.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
         backgroundColor: MyThemeData.backGroundColor,
         child: Column(
-
           children: [
             Image.asset(
               'assets/images/splashImage2.png',
@@ -55,7 +53,7 @@ class MyDrawer extends StatelessWidget {
               function: () {
                 Navigator.pop(context);
                 Navigator.pushReplacementNamed(
-                    context, RoutNamesDart.rOldTicketsScreen);
+                    context, RoutNamesDart.rMyTicketsScreen);
               },
               icons: const Icon(CupertinoIcons.tickets,
                   color: MyThemeData.dappblue),
@@ -76,6 +74,5 @@ class MyDrawer extends StatelessWidget {
                 color: MyThemeData.dappblue),
           ],
         ));
-
   }
 }

@@ -8,23 +8,19 @@ class ContactUs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: MyThemeData.appblue,
     ));
 
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: Text("تواصل معنا"),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            BodyWhiteContainer(
-              bodyChild: Container(),
-            )
-          ],
+        body: Center(
+          child: BodyWhiteContainer(
+            bodyChild: Container(),
+          ),
         ),
       ),
     );

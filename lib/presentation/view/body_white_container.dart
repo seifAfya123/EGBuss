@@ -12,17 +12,17 @@ class BodyWhiteContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 3.w),
-        margin: EdgeInsets.only(top: 1.h),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(7.w), topRight: Radius.circular(7.w)),
-          color: MyThemeData.backGroundColor,
-        ),
-        child: bodyChild,
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(horizontal: 3.w),
+      margin: EdgeInsets.only(top: 1.h),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(7.w), topRight: Radius.circular(7.w)),
+        color: MyThemeData.backGroundColor,
       ),
+      child: bodyChild,
     );
   }
 }

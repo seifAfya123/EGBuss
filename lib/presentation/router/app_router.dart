@@ -53,7 +53,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => NotificationDetailsScreen());
       case RoutNamesDart.rOldTicketsScreen:
         return MaterialPageRoute(builder: (_) => OldTicketsScreen());
-
+      case RoutNamesDart.rMyTicketsScreen:
+        return MaterialPageRoute(builder: (_) => TicketsScreen());
       // case RoutNamesDart.rAddItemSceen:
       //   String arguments = settings.arguments as String;
       //   return MaterialPageRoute(

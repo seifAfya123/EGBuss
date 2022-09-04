@@ -53,8 +53,8 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 OptionsInProfile(
                   text: 'التذاكر السابقة',
-                  route: RoutNamesDart.rMyOldTicketsScreen,
                   icons: const Icon(Icons.history),
+                  route: RoutNamesDart.rOldTicketsScreen,
                 )
               ],
             ),
