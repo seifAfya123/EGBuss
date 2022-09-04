@@ -17,7 +17,9 @@ class OptionsInProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (() {}),
+      onTap: (() {
+        Navigator.pushNamed(context, route);
+      }),
       child: Container(
         margin: EdgeInsets.fromLTRB(3.w, 5.h, 3.w, 3.h),
         decoration: BoxDecoration(

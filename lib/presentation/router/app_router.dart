@@ -4,10 +4,12 @@ import 'package:testapp/presentation/screens/shared/available_trips_screen.dart'
 import 'package:testapp/presentation/screens/shared/edit_profile_screen.dart';
 import 'package:testapp/presentation/screens/shared/home_screen.dart';
 import 'package:testapp/presentation/screens/shared/login_screen.dart';
+import 'package:testapp/presentation/screens/shared/old_tickets_screen.dart';
 import 'package:testapp/presentation/screens/shared/profile_screen.dart';
 import 'package:testapp/presentation/screens/shared/register_screen.dart';
 import 'package:testapp/presentation/screens/shared/seat_reservation_screen.dart';
 import 'package:testapp/presentation/screens/shared/splash_screen.dart';
+import 'package:testapp/presentation/screens/shared/tickets_screen.dart';
 
 class AppRouter {
   Route? onGenerateRoute(RouteSettings settings) {
@@ -28,7 +30,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => SeatReservation());
       case RoutNamesDart.rAvailableTripsScreen:
         return MaterialPageRoute(builder: (_) => AvailableTripsScreen());
-
+      case RoutNamesDart.rMyTicketsScreen:
+        return MaterialPageRoute(builder: (_) => TicketsScreen());
+      case RoutNamesDart.rMyOldTicketsScreen:
+        return MaterialPageRoute(builder: (_) => OldTicketsScreen());
       // case RoutNamesDart.rAddItemSceen:
       //   String arguments = settings.arguments as String;
       //   return MaterialPageRoute(

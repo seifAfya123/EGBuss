@@ -35,7 +35,12 @@ class MyDrawer extends StatelessWidget {
             icons: const Icon(Icons.notifications_none),
             color: MyThemeData.dappblue),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushReplacementNamed(
+              context,
+              RoutNamesDart.rMyTicketsScreen,
+            );
+          },
           child: Row(
             children: [
               Padding(
