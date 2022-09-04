@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:testapp/business_logic/register_cubit/register_cubit.dart';
+import 'package:testapp/constants/const_validations.dart';
 import 'package:testapp/data/models/user.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
+import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/custom_text_feild.dart';
 import 'package:testapp/presentation/widget/default_button_text.dart';
@@ -21,11 +24,13 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: MyThemeData.backGroundColor,
+    ));
+
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("تسجيل الدخول"),
-        ),
+        backgroundColor: MyThemeData.backGroundColor,
         body: BlocConsumer<RegisterCubit, RegisterState>(
           listener: (context, state) {
             if (state is SuccessState) {
@@ -44,7 +49,9 @@ class RegisterScreen extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
-                    SizedBox(height: 10.h),
+                    SizedBox(height: 5.h),
+                    Text("تسجيل الدخول"),
+                    SizedBox(height: 5.h),
                     CustomeTextFeild(
                       textController: nameController,
                       feildText: "الاسم",
@@ -85,7 +92,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 3.h),
                     CustomElevatedButton(
-                      myWidgets: const [DefaultButtonText(text: "انشاء حساب")],
+                      myWidgets: const DefaultButtonText(text: "انشاء حساب"),
                       otpressFunction: () {
                         mycubit.registerUser(
                           UserModel(
@@ -112,5 +119,38 @@ class RegisterScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  snackbarWidget(String text) {
+    return SnackBar(
+      content: Text(text),
+      backgroundColor: Colors.red,
+      duration: const Duration(milliseconds: 1500),
+    );
+  }
+
+  gotoOTPSCreen(RegisterCubit mycubit, BuildContext context) {
+    var x = ConstValidations.validateAllFeilds(
+      controllersList: [
+        nameController.text,
+        emailController.text,
+        phoneNumberController.text,
+        passwordController.text,
+        cpasswordController.text
+      ],
+    );
+    if (x == null) {
+      mycubit.registerUser(
+        UserModel(
+          name: nameController.text,
+          email: emailController.text,
+          phone: phoneNumberController.text,
+          password: passwordController.text,
+          cPassword: cpasswordController.text,
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(snackbarWidget(x ?? "error"));
+    }
   }
 }

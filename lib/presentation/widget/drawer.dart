@@ -6,57 +6,73 @@ import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/widget/drawer_item.dart';
 
 class MyDrawer extends StatelessWidget {
+  const MyDrawer({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Drawer(
+        backgroundColor: MyThemeData.backGroundColor,
         child: Column(
-      children: [
-        Image.asset(
-          'assets/images/splashImage2.png',
-          width: 60.w,
-          height: 20.h,
-        ),
-        const Divider(
-          color: MyThemeData.dappDarkblue,
-        ),
-        DrawerItem(
-            text: 'حجز',
-            route: RoutNamesDart.rHomeScreen,
-            icons: const Icon(Icons.history)),
-        DrawerItem(
-            text: 'الملف الشخصى',
-            route: RoutNamesDart.rProfileScreen,
-            icons: const Icon(Icons.account_circle_outlined)),
-        DrawerItem(
-            text: 'الأشعارات',
-            route: '',
-            icons: const Icon(Icons.notifications_none)),
-        InkWell(
-          onTap: () {},
-          child: Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(3.w),
-                child: const Icon(
-                  CupertinoIcons.tickets,
-                  color: MyThemeData.dappblue,
-                ),
-              ),
-              const Text('تذاكرك')
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 30.h,
-        ),
-        const Divider(
-          color: MyThemeData.dappDarkblue,
-        ),
-        DrawerItem(
-            text: 'تسجيل خروج',
-            route: RoutNamesDart.rLoginScreen,
-            icons: const Icon(Icons.logout)),
-      ],
-    ));
+          children: [
+            Image.asset(
+              'assets/images/splashImage2.png',
+              width: 80.w,
+              height: 20.h,
+            ),
+            const Divider(
+              color: MyThemeData.dappDarkblue,
+            ),
+            DrawerItem(
+                text: 'حجز',
+                function: () {
+                  Navigator.pop(context);
+                  Navigator.pushReplacementNamed(
+                      context, RoutNamesDart.rHomeScreen);
+                },
+                icons: const Icon(Icons.history),
+                color: MyThemeData.dappblue),
+            DrawerItem(
+                text: 'الملف الشخصى',
+                function: () {
+                  Navigator.pop(context);
+                  Navigator.pushReplacementNamed(
+                      context, RoutNamesDart.rProfileScreen);
+                },
+                icons: const Icon(Icons.account_circle_outlined),
+                color: MyThemeData.dappblue),
+            DrawerItem(
+                text: 'الأشعارات',
+                function: () {
+                  Navigator.pop(context);
+                  Navigator.pushReplacementNamed(
+                      context, RoutNamesDart.rNotificationsScreen);
+                },
+                icons: const Icon(Icons.notifications_none),
+                color: MyThemeData.dappblue),
+            DrawerItem(
+              text: 'تذاكرك',
+              function: () {
+                Navigator.pop(context);
+                Navigator.pushReplacementNamed(
+                    context, RoutNamesDart.rMyTicketsScreen);
+              },
+              icons: const Icon(CupertinoIcons.tickets,
+                  color: MyThemeData.dappblue),
+              color: MyThemeData.dappblue,
+            ),
+            Expanded(child: Container()),
+            const Divider(
+              color: MyThemeData.dappDarkblue,
+            ),
+            DrawerItem(
+                text: 'تسجيل خروج',
+                function: () {
+                  Navigator.pop(context);
+                  Navigator.pushReplacementNamed(
+                      context, RoutNamesDart.rLoginScreen);
+                },
+                icons: const Icon(Icons.logout),
+                color: MyThemeData.dappblue),
+          ],
+        ));
   }
 }
