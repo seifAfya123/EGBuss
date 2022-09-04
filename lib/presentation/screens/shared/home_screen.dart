@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         drawer: MyDrawer(),
+
         appBar: AppBar(
           title: const Text("ابحث عن رحلتك"),
         ),
@@ -64,9 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     textfeildWidget: Text("dsa"),
                     city: "الموقف الجديد")
                 : Container(),
-            const LeavingAndArrivingCard(isArriving: true),
+            const LeavingAndArrivingCard(isFrom: true),
             !isOneWayTrip
-                ? const LeavingAndArrivingCard(isArriving: false)
+                ? const LeavingAndArrivingCard(isFrom: false)
                 : Container(),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.h),

@@ -14,6 +14,7 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyThemeData.backGroundColor,
       appBar: AppBar(
         title: const Text('الملف الشخصى'),
       ),
@@ -69,28 +70,29 @@ class EditProfileScreen extends StatelessWidget {
             ),
           ),
           Container(
-            margin:
-                EdgeInsets.only(top: 8.h, right: 8.h, left: 8.h, bottom: 1.h),
-            child: CustomElevatedButton(
-              myWidgets: const DefaultButtonText(text: "تغيير كلمه السر"),
-              otpressFunction: () {
-                Navigator.pushNamed(
-                    context, RoutNamesDart.rAvailableTripsScreen);
-              },
-            ),
-          ),
-          Container(
-            margin:
-                EdgeInsets.only(top: 4.h, right: 8.h, left: 8.h, bottom: 1.h),
-            child: CustomElevatedButton(
-              myWidgets: const DefaultButtonText(text: "تاكيد"),
-              otpressFunction: () {
-                Navigator.pushNamed(
-                    context, RoutNamesDart.rAvailableTripsScreen);
-              },
-              buttonColor: MyThemeData.dappblue,
-            ),
-          ),
+              // color: Colors.red,
+              height: 30.h,
+              margin: EdgeInsets.symmetric(horizontal: 5.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CustomElevatedButton(
+                    myWidgets: const DefaultButtonText(text: "تغيير كلمه السر"),
+                    otpressFunction: () {
+                      Navigator.pushNamed(
+                          context, RoutNamesDart.rAvailableTripsScreen);
+                    },
+                  ),
+                  CustomElevatedButton(
+                    myWidgets: const DefaultButtonText(text: "تاكيد"),
+                    otpressFunction: () {
+                      Navigator.pushNamed(
+                          context, RoutNamesDart.rAvailableTripsScreen);
+                    },
+                    buttonColor: MyThemeData.dappblue,
+                  ),
+                ],
+              )),
         ],
       ),
     );
