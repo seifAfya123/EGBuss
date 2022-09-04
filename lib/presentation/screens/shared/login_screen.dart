@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:testapp/business_logic/login_cubit/login_cubit.dart';
+import 'package:testapp/constants/constant_data.dart';
 import 'package:testapp/data/models/user.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
+import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/widget/custom_cicular_image.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/custom_text_feild.dart';
@@ -17,11 +20,24 @@ class LoginScreen extends StatelessWidget {
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: MyThemeData.backGroundColor,
+    ));
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("تسجيل الدخول"),
-        ),
+        backgroundColor: MyThemeData.backGroundColor,
+        // appBar: AppBar(
+        //   backgroundColor: MyThemeData.backGroundColor,
+        //   systemOverlayStyle: const SystemUiOverlayStyle(
+        //     // Status bar color
+        //     statusBarColor: MyThemeData.backGroundColor,
+
+        //     // Status bar brightness (optional)
+        //     statusBarIconBrightness:
+        //         Brightness.dark, // For Android (dark icons)
+        //     statusBarBrightness: Brightness.light, // For iOS (dark icons)
+        //   ),
+        // ),
         // backgroundColor: Colors.red,
         body: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
@@ -41,11 +57,14 @@ class LoginScreen extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
-                    SizedBox(height: 10.h),
-                    CustomCicularImage(
-                      imgRadius: 50.w,
+                    SizedBox(height: 5.h),
+                    Text(
+                      "تسجيل الدخول",
+                      style: Theme.of(context).textTheme.headline1,
                     ),
-                    SizedBox(height: 10.h),
+                    SizedBox(height: 5.h),
+                    Image.asset(ConstantData.egbuss),
+                    SizedBox(height: 5.h),
                     CustomeTextFeild(
                       textController: phoneNumberController,
                       feildText: "رقم التليفون",
@@ -63,7 +82,21 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 3.h),
                     CustomElevatedButton(
+                      buttonColor: MyThemeData.appblue,
                       myWidgets: const DefaultButtonText(text: "تسجيل الدخول"),
+                      otpressFunction: () {
+                        mycubit.loginUser(
+                          UserModel(
+                            phone: phoneNumberController.text,
+                            password: passwordController.text,
+                          ),
+                        );
+                      },
+                    ),
+                    SizedBox(height: 3.h),
+                    CustomElevatedButton(
+                      myWidgets:
+                          const DefaultButtonText(text: "تسجيل الدخول كزائر"),
                       otpressFunction: () {
                         mycubit.loginUser(
                           UserModel(
@@ -87,6 +120,14 @@ class LoginScreen extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+
+  snackbarWidget(String text) {
+    return SnackBar(
+      content: Text(text),
+      backgroundColor: Colors.red,
+      duration: const Duration(milliseconds: 1500),
     );
   }
 }

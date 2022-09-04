@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/widget/custom_cicular_image.dart';
@@ -14,8 +15,12 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: MyThemeData.appblue,
+    ));
     return SafeArea(
       child: Scaffold(
+        backgroundColor: MyThemeData.backGroundColor,
         drawer: MyDrawer(),
         appBar: AppBar(
           title: const Text("الملف الشخصي"),
@@ -98,17 +103,23 @@ class ProfileScreen extends StatelessWidget {
             DrawerItem(
                 text: 'الحمايه و الخصوصيه',
                 icons: const Icon(Icons.privacy_tip_outlined),
-                route: 'route',
+                function: () {
+                  Navigator.pushNamed(context, RoutNamesDart.rprivacyPolicy);
+                },
                 color: MyThemeData.appDarkblue),
             DrawerItem(
                 text: 'من نحن',
                 icons: const Icon(Icons.info_outline),
-                route: 'route',
+                function: () {
+                  Navigator.pushNamed(context, RoutNamesDart.rAboutUsScreen);
+                },
                 color: MyThemeData.appDarkblue),
             DrawerItem(
               text: 'تواصل معنا',
               icons: const Icon(Icons.contact_support_outlined),
-              route: 'route',
+              function: () {
+                Navigator.pushNamed(context, RoutNamesDart.rContactUsScreen);
+              },
               color: MyThemeData.appDarkblue,
             ),
           ],

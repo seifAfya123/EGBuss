@@ -27,64 +27,64 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: Drawer(
-            child: Column(
-          children: [
-            Image.asset(
-              'assets/images/splashImage2.png',
-              width: 60.w,
-              height: 20.h,
-            ),
-            const Divider(
-              color: MyThemeData.dappDarkblue,
-            ),
-            DrawerItem(
-              text: 'حجز',
-              route: RoutNamesDart.rHomeScreen,
-              icons: const Icon(Icons.history),
-              color: MyThemeData.dappblue,
-            ),
-            DrawerItem(
-              text: 'الملف الشخصى',
-              route: RoutNamesDart.rProfileScreen,
-              icons: const Icon(Icons.account_circle_outlined),
-              color: MyThemeData.dappblue,
-            ),
-            DrawerItem(
-              text: 'الأشعارات',
-              route: '',
-              icons: const Icon(Icons.notifications_none),
-              color: MyThemeData.dappblue,
-            ),
-            InkWell(
-              onTap: () {},
-              child: Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(3.w),
-                    child: const Icon(
-                      CupertinoIcons.tickets,
-                      color: MyThemeData.dappblue,
-                    ),
-                  ),
-                  const Text('تذاكرك')
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 30.h,
-            ),
-            const Divider(
-              color: MyThemeData.dappDarkblue,
-            ),
-            DrawerItem(
-              text: 'تسجيل خروج',
-              route: RoutNamesDart.rLoginScreen,
-              icons: const Icon(Icons.logout),
-              color: MyThemeData.dappblue,
-            ),
-          ],
-        )),
+        // drawer: Drawer(
+        //     child: Column(
+        //   children: [
+        //     Image.asset(
+        //       'assets/images/splashImage2.png',
+        //       width: 60.w,
+        //       height: 20.h,
+        //     ),
+        //     const Divider(
+        //       color: MyThemeData.dappDarkblue,
+        //     ),
+        //     DrawerItem(
+        //       text: 'حجز',
+        //       route: RoutNamesDart.rHomeScreen,
+        //       icons: const Icon(Icons.history),
+        //       color: MyThemeData.dappblue,
+        //     ),
+        //     DrawerItem(
+        //       text: 'الملف الشخصى',
+        //       route: RoutNamesDart.rProfileScreen,
+        //       icons: const Icon(Icons.account_circle_outlined),
+        //       color: MyThemeData.dappblue,
+        //     ),
+        //     DrawerItem(
+        //       text: 'الأشعارات',
+        //       route: '',
+        //       icons: const Icon(Icons.notifications_none),
+        //       color: MyThemeData.dappblue,
+        //     ),
+        //     InkWell(
+        //       onTap: () {},
+        //       child: Row(
+        //         children: [
+        //           Padding(
+        //             padding: EdgeInsets.all(3.w),
+        //             child: const Icon(
+        //               CupertinoIcons.tickets,
+        //               color: MyThemeData.dappblue,
+        //             ),
+        //           ),
+        //           const Text('تذاكرك')
+        //         ],
+        //       ),
+        //     ),
+        //     SizedBox(
+        //       height: 30.h,
+        //     ),
+        //     const Divider(
+        //       color: MyThemeData.dappDarkblue,
+        //     ),
+        //     DrawerItem(
+        //       text: 'تسجيل خروج',
+        //       route: RoutNamesDart.rLoginScreen,
+        //       icons: const Icon(Icons.logout),
+        //       color: MyThemeData.dappblue,
+        //     ),
+        //   ],
+        // )),
         appBar: AppBar(
           title: const Text("ابحث عن رحلتك"),
         ),
@@ -120,9 +120,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     textfeildWidget: Text("dsa"),
                     city: "الموقف الجديد")
                 : Container(),
-            const LeavingAndArrivingCard(isArriving: true),
+            const LeavingAndArrivingCard(isFrom: true),
             !isOneWayTrip
-                ? const LeavingAndArrivingCard(isArriving: false)
+                ? const LeavingAndArrivingCard(isFrom: false)
                 : Container(),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.h),
