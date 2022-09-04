@@ -17,6 +17,7 @@ class OptionsInProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.fromLTRB(3.w, 5.h, 3.w, 3.h),
@@ -27,6 +28,7 @@ class OptionsInProfile extends StatelessWidget {
       width: 25.w,
       child: InkWell(
         onTap: () => ontap,
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,

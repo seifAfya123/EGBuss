@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
+import 'package:testapp/presentation/widget/available_ticket_widget.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/default_button_text.dart';
 import 'package:testapp/presentation/widget/from_to_text_container.dart';
@@ -16,12 +17,33 @@ class AvailableTripsScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text("الرحلات المتاحه"),
         ),
-        body: Column(
-          children: [
-            const FromToTextContainer(),
-            tripOption(context),
-            tripOption(context),
-          ],
+        body: Center(
+          child: Column(
+            children: [
+              AvailableTickets(
+                ticketNumber: "#111111",
+                price: '200',
+                from: 'القاهرة',
+                to: 'الأسكندرية',
+                text1: 'الكراسى المتاحة',
+                text2: '11 كرسى',
+                time: '10:30صباحا ',
+                type: 'vip',
+                typeColor: MyThemeData.appyellow,
+              ),
+              AvailableTickets(
+                ticketNumber: "#222222",
+                price: '150',
+                from: 'الأسكندرية',
+                to: 'القاهرة',
+                text1: 'الكراسى المتاحة',
+                text2: '11 كرسى',
+                time: '10:30صباحا ',
+                type: 'Regular',
+                typeColor: MyThemeData.dappblue,
+              ),
+            ],
+          ),
         ),
       ),
     );

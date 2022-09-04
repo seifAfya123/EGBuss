@@ -13,6 +13,7 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
         backgroundColor: MyThemeData.backGroundColor,
         child: Column(
+
           children: [
             Image.asset(
               'assets/images/splashImage2.png',
@@ -75,5 +76,6 @@ class MyDrawer extends StatelessWidget {
                 color: MyThemeData.dappblue),
           ],
         ));
+
   }
 }
