@@ -17,10 +17,11 @@ class SelectTripScreen extends StatefulWidget {
 }
 
 class _SelectTripScreenState extends State<SelectTripScreen> {
-  bool isOneWayTrip = false;
+  bool isOneWayTrip = true;
+
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: MyThemeData.appblue,
     ));
     return SafeArea(
@@ -52,7 +53,7 @@ class _SelectTripScreenState extends State<SelectTripScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 3.h),
+                SizedBox(height: 2.h),
                 Row(
                   children: [
                     const LeavingAndArrivingCard(isFrom: false),
@@ -60,9 +61,9 @@ class _SelectTripScreenState extends State<SelectTripScreen> {
                     const LeavingAndArrivingCard(isFrom: true),
                   ],
                 ),
-                SizedBox(height: 3.h),
+                SizedBox(height: 2.h),
                 AnimatedCrossFade(
-                  firstCurve: Curves.easeInCirc,
+                  // firstCurve: Curves.easeInCirc,
                   firstChild: const Expanded(
                       child: LeavingAndArrivingCard(isFrom: false)),
                   secondChild: Row(
@@ -75,7 +76,7 @@ class _SelectTripScreenState extends State<SelectTripScreen> {
                   crossFadeState: isOneWayTrip
                       ? CrossFadeState.showFirst
                       : CrossFadeState.showSecond,
-                  duration: const Duration(microseconds: 3500),
+                  duration: const Duration(microseconds: 500),
                 ),
                 SizedBox(height: 3.h),
                 CustomElevatedButton(
@@ -92,10 +93,10 @@ class _SelectTripScreenState extends State<SelectTripScreen> {
     );
   }
 
-  Widget tripType(title, isYellow) {
+  Widget tripType(title, isoneWay) {
     return InkWell(
       onTap: () {
-        !isYellow
+        !isoneWay
             ? setState(() {
                 isOneWayTrip = !isOneWayTrip;
               })
@@ -107,7 +108,7 @@ class _SelectTripScreenState extends State<SelectTripScreen> {
         padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.w),
-          color: isYellow ? MyThemeData.appyellow : MyThemeData.appblue,
+          color: isoneWay ? MyThemeData.appyellow : MyThemeData.appblue,
         ),
         child: Text(
           title,

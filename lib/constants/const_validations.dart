@@ -106,11 +106,25 @@ class ConstValidations {
     } else {
       return nameValidation(controllersList[0]);
     }
-    // nameValidation(controllersList[0]);
-    // nameValidation(controllersList[1]);
-    // emailValidation(controllersList[2]);
-    // phoneValidation(controllersList[3]);
-    // passwordValidation(controllersList[4]);
-    // cpasswordValidation(controllersList[4], controllersList[5]);
+  }
+
+  static loginValidation({
+    String? email,
+    String? phone,
+    required String password,
+  }) {
+    if (email == null) {
+      if (phoneValidation(phone) == null) {
+        return passwordValidation(password);
+      } else {
+        return phoneValidation(phone);
+      }
+    } else {
+      if (emailValidation(email) == null) {
+        return passwordValidation(password);
+      } else {
+        return emailValidation(email);
+      }
+    }
   }
 }

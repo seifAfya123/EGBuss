@@ -63,7 +63,7 @@ class MyThemeData {
           fontSize: 14.sp, color: appDarkblue, fontWeight: FontWeight.bold),
       bodyText2: TextStyle(fontSize: 14.sp, color: appDarkblue),
       subtitle1: TextStyle(
-          fontSize: 18.sp, color: appDarkblue, fontWeight: FontWeight.bold),
+          fontSize: 14.sp, color: appDarkblue, fontWeight: FontWeight.w500),
       subtitle2: TextStyle(
         fontSize: 14.sp,
         color: appDarkblue.withOpacity(0.5),
