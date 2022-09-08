@@ -8,6 +8,7 @@ import 'package:testapp/presentation/widget/default_button_text.dart';
 import 'package:testapp/presentation/widget/drawer.dart';
 import 'package:testapp/presentation/widget/leaving_and_arriving_card.dart';
 import 'package:sizer/sizer.dart';
+import 'package:testapp/presentation/widget/trip_time_picker.dart';
 
 class SelectTripScreen extends StatefulWidget {
   const SelectTripScreen({Key? key}) : super(key: key);
@@ -18,7 +19,6 @@ class SelectTripScreen extends StatefulWidget {
 
 class _SelectTripScreenState extends State<SelectTripScreen> {
   bool isOneWayTrip = true;
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -32,6 +32,7 @@ class _SelectTripScreenState extends State<SelectTripScreen> {
         ),
         body: Center(
           child: BodyWhiteContainer(
+            withPadding: true,
             bodyChild: Column(
               children: [
                 Expanded(
@@ -56,27 +57,28 @@ class _SelectTripScreenState extends State<SelectTripScreen> {
                 SizedBox(height: 2.h),
                 Row(
                   children: [
-                    const LeavingAndArrivingCard(isFrom: false),
+                    LeavingAndArrivingCard(
+                        isFrom: false,
+                        function: () {
+                          debugPrint("bottomsheet");
+                        }),
                     SizedBox(width: 3.w),
-                    const LeavingAndArrivingCard(isFrom: true),
+                    LeavingAndArrivingCard(
+                        isFrom: true,
+                        function: () {
+                          debugPrint("bottomsheet");
+                        }),
                   ],
                 ),
                 SizedBox(height: 2.h),
                 AnimatedCrossFade(
-                  // firstCurve: Curves.easeInCirc,
-                  firstChild: const Expanded(
-                      child: LeavingAndArrivingCard(isFrom: false)),
-                  secondChild: Row(
-                    children: [
-                      LeavingAndArrivingCard(isFrom: false),
-                      SizedBox(width: 3.w),
-                      LeavingAndArrivingCard(isFrom: false),
-                    ],
-                  ),
+                  firstChild: fisrtChild(),
+                  secondChild: secondChild(),
                   crossFadeState: isOneWayTrip
                       ? CrossFadeState.showFirst
                       : CrossFadeState.showSecond,
-                  duration: const Duration(microseconds: 500),
+                  duration: const Duration(milliseconds: 500),
+                  firstCurve: Curves.linearToEaseOut,
                 ),
                 SizedBox(height: 3.h),
                 CustomElevatedButton(
@@ -90,6 +92,32 @@ class _SelectTripScreenState extends State<SelectTripScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  fisrtChild() {
+    return Row(
+      children: [
+        TripTimePicker(function: () {
+          debugPrint("timepicker");
+        }),
+      ],
+    );
+  }
+
+  secondChild() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        TripTimePicker(function: () {
+          debugPrint("timepicker");
+        }),
+        SizedBox(width: 3.w),
+        TripTimePicker(function: () {
+          debugPrint("timepicker");
+        }),
+      ],
     );
   }
 

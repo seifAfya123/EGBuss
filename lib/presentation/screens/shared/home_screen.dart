@@ -64,9 +64,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     textfeildWidget: Text("dsa"),
                     city: "الموقف الجديد")
                 : Container(),
-            const LeavingAndArrivingCard(isFrom: true),
+            // const LeavingAndArrivingCard(isFrom: true),
             !isOneWayTrip
-                ? const LeavingAndArrivingCard(isFrom: false)
+                ? LeavingAndArrivingCard(
+                    isFrom: false,
+                    function: () {
+                      debugPrint("timepicker");
+                    })
                 : Container(),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.h),

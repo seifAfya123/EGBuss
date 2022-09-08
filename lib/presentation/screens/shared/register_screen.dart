@@ -34,8 +34,9 @@ class RegisterScreen extends StatelessWidget {
         body: BlocConsumer<RegisterCubit, RegisterState>(
           listener: (context, state) {
             if (state is SuccessState) {
-              Navigator.pushReplacementNamed(
-                  context, RoutNamesDart.rHomeScreen);
+              Navigator.pushNamed(
+                  context, RoutNamesDart.rOTPScreen);
+                  // context, RoutNamesDart.rHomeScreen);
             }
           },
           builder: (context, state) {
@@ -69,6 +70,7 @@ class RegisterScreen extends StatelessWidget {
                         Container(
                           width: 40.w,
                           child: CustomElevatedButton(
+
                               buttonColor: MyThemeData.appGery,
                               myWidgets: Text("Male"),
                               otpressFunction: () {}),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/data/network/requests/login%20and%20reqister%20req/owner_register_request.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/screens/shared/about_us.dart';
 import 'package:testapp/presentation/screens/shared/available_trips_screen.dart';
@@ -10,6 +11,7 @@ import 'package:testapp/presentation/screens/shared/login_screen.dart';
 import 'package:testapp/presentation/screens/shared/notification_details_screen.dart';
 import 'package:testapp/presentation/screens/shared/notifications.dart';
 import 'package:testapp/presentation/screens/shared/old_tickets_screen.dart';
+import 'package:testapp/presentation/screens/shared/otp_screen.dart';
 import 'package:testapp/presentation/screens/shared/privacy_and_policy.dart';
 
 import 'package:testapp/presentation/screens/shared/profile_screen.dart';
@@ -55,6 +57,12 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => OldTicketsScreen());
       case RoutNamesDart.rMyTicketsScreen:
         return MaterialPageRoute(builder: (_) => TicketsScreen());
+      case RoutNamesDart.rOTPScreen:
+        OwnerRegisterRequest owner = OwnerRegisterRequest(phone: "01012720084");
+        return MaterialPageRoute(
+            builder: (_) => OtpScreen(
+                  owner: owner,
+                ));
       // case RoutNamesDart.rAddItemSceen:
       //   String arguments = settings.arguments as String;
       //   return MaterialPageRoute(
