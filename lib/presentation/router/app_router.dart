@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/data/models/mesasge.dart';
+import 'package:testapp/data/models/ticket.dart';
 import 'package:testapp/data/network/requests/login%20and%20reqister%20req/owner_register_request.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/screens/shared/about_us.dart';
 import 'package:testapp/presentation/screens/shared/available_trips_screen.dart';
 import 'package:testapp/presentation/screens/shared/contact_us.dart';
 import 'package:testapp/presentation/screens/shared/edit_profile_screen.dart';
-import 'package:testapp/presentation/screens/shared/home_screen.dart';
 import 'package:testapp/presentation/screens/shared/login_screen.dart';
 
 import 'package:testapp/presentation/screens/shared/notification_details_screen.dart';
@@ -17,8 +18,10 @@ import 'package:testapp/presentation/screens/shared/privacy_and_policy.dart';
 import 'package:testapp/presentation/screens/shared/profile_screen.dart';
 import 'package:testapp/presentation/screens/shared/register_screen.dart';
 import 'package:testapp/presentation/screens/shared/seat_reservation_screen.dart';
+import 'package:testapp/presentation/screens/shared/find_trip_screen.dart';
 import 'package:testapp/presentation/screens/shared/select_trip_screen.dart';
 import 'package:testapp/presentation/screens/shared/splash_screen.dart';
+import 'package:testapp/presentation/screens/shared/ticket_details_screen.dart';
 import 'package:testapp/presentation/screens/shared/tickets_screen.dart';
 
 class AppRouter {
@@ -40,9 +43,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => SeatReservation());
       case RoutNamesDart.rAvailableTripsScreen:
         return MaterialPageRoute(builder: (_) => AvailableTripsScreen());
-
       case RoutNamesDart.rHomeScreen:
-        return MaterialPageRoute(builder: (_) => SelectTripScreen());
+        return MaterialPageRoute(builder: (_) => FindTripScreen());
       case RoutNamesDart.rprivacyPolicy:
         return MaterialPageRoute(builder: (_) => PrivacyAndPolicy());
       case RoutNamesDart.rAboutUsScreen:
@@ -51,8 +53,21 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => ContactUs());
       case RoutNamesDart.rNotificationsScreen:
         return MaterialPageRoute(builder: (_) => NotificationsScreen());
+      case RoutNamesDart.rSelecTripScreen:
+        return MaterialPageRoute(builder: (_) => SelectTripScreen());
+      case RoutNamesDart.rTripTicketScreen:
+        Ticket args = settings.arguments as Ticket;
+        return MaterialPageRoute(
+            builder: (_) => TicketDetailsScreen(
+                  ticket: args,
+                ));
+
       case RoutNamesDart.rNotificationDetailsScreen:
-        return MaterialPageRoute(builder: (_) => NotificationDetailsScreen());
+        Mesasge args = settings.arguments as Mesasge;
+        return MaterialPageRoute(
+            builder: (_) => NotificationDetailsScreen(
+                  message: args,
+                ));
       case RoutNamesDart.rOldTicketsScreen:
         return MaterialPageRoute(builder: (_) => OldTicketsScreen());
       case RoutNamesDart.rMyTicketsScreen:

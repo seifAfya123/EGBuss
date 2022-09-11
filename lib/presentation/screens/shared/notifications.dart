@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:testapp/constants/const_test_data.dart';
+import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
 import 'package:testapp/presentation/widget/drawer.dart';
@@ -17,11 +19,18 @@ class NotificationsScreen extends StatelessWidget {
 
     return Scaffold(
       drawer: const MyDrawer(),
-      appBar: AppBar(title: const Text("الاشعارات")),
+      appBar: AppBar(
+          title: Text(
+        "الاشعارات",
+        style: Theme.of(context)
+            .textTheme
+            .headline1!
+            .copyWith(color: MyThemeData.mywhite),
+      )),
       body: BodyWhiteContainer(
         bodyChild: ListView.separated(
           physics: const BouncingScrollPhysics(),
-          itemCount: 10,
+          itemCount: constMessages.length,
           separatorBuilder: (BuildContext context, int index) {
             return Container(
               margin: EdgeInsets.symmetric(horizontal: 10.w),
@@ -31,13 +40,8 @@ class NotificationsScreen extends StatelessWidget {
           },
           itemBuilder: (BuildContext context, int index) {
             return NotificationContainer(
-                isSeen: index % 2 == 0,
-                message:
-                    "message message message message message message message message message message message message",
-                function: () {
-                  print(
-                      "show notifications details*********************************** $index");
-                });
+              message: constMessages[index],
+            );
           },
         ),
       ),
