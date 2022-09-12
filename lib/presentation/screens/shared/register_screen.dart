@@ -34,8 +34,9 @@ class RegisterScreen extends StatelessWidget {
         body: BlocConsumer<RegisterCubit, RegisterState>(
           listener: (context, state) {
             if (state is SuccessState) {
-              Navigator.pushReplacementNamed(
-                  context, RoutNamesDart.rHomeScreen);
+              Navigator.pushNamed(
+                  context, RoutNamesDart.rOTPScreen);
+                  // context, RoutNamesDart.rHomeScreen);
             }
           },
           builder: (context, state) {
@@ -50,7 +51,10 @@ class RegisterScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: 5.h),
-                    Text("تسجيل الدخول"),
+                    Text(
+                      "انشاء حساب",
+                      style: Theme.of(context).textTheme.headline1,
+                    ),
                     SizedBox(height: 5.h),
                     CustomeTextFeild(
                       textController: nameController,
@@ -58,6 +62,26 @@ class RegisterScreen extends StatelessWidget {
                       withShadow: true,
                       userInputType: TextInputType.name,
                       action: const Icon(Icons.person),
+                    ),
+                    SizedBox(height: 3.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 40.w,
+                          child: CustomElevatedButton(
+
+                              buttonColor: MyThemeData.appGery,
+                              myWidgets: Text("Male"),
+                              otpressFunction: () {}),
+                        ),
+                        Container(
+                          width: 40.w,
+                          child: CustomElevatedButton(
+                              myWidgets: Text("female"),
+                              otpressFunction: () {}),
+                        ),
+                      ],
                     ),
                     SizedBox(height: 3.h),
                     CustomeTextFeild(
@@ -92,6 +116,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 3.h),
                     CustomElevatedButton(
+                      buttonColor: MyThemeData.appblue,
                       myWidgets: const DefaultButtonText(text: "انشاء حساب"),
                       otpressFunction: () {
                         mycubit.registerUser(

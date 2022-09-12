@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:testapp/constants/constant_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/widget/drawer_item.dart';
@@ -14,7 +15,7 @@ class MyDrawer extends StatelessWidget {
         child: Column(
           children: [
             Image.asset(
-              'assets/images/splashImage2.png',
+              ConstantData.egbusspng,
               width: 80.w,
               height: 20.h,
             ),

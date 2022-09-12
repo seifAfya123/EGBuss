@@ -8,6 +8,7 @@ import 'package:testapp/business_logic/login_cubit/login_cubit.dart';
 import 'package:testapp/business_logic/register_cubit/register_cubit.dart';
 import 'package:testapp/business_logic/seat_reserver_cubit/seat_reserver_cubit.dart';
 import 'package:testapp/constants/app_strings.dart';
+import 'package:testapp/constants/end_points.dart';
 import 'package:testapp/constants/language_manager.dart';
 import 'package:testapp/data/local/cache_helper.dart';
 import 'package:testapp/presentation/router/app_router.dart';
@@ -32,7 +33,17 @@ Future<void> main() async {
   cash = CacheHelper.getDataFromSharedPreference(key: AppStrings.theme) ??
       AppStrings.light;
   CacheHelper.saveDataSharedPreference(key: AppStrings.theme, value: cash);
+  // var x=CacheHelper.getDataFromSharedPreference(key: appLanguageSharedKey) ?? LanguageManager.getAppLanguage().then((value) => value.toString());
+  // CacheHelper.getDataFromSharedPreference(key: appLanguageSharedKey) == 'ar'
+  //     ? CacheHelper.saveDataSharedPreference(
+  //         key: appLanguageSharedKey, value: null)
+  //     : null;
 
+  var x = CacheHelper.getDataFromSharedPreference(key: appLanguageSharedKey) ??
+      LanguageManager.getAppLanguage().then((value) => value.toString());
+  CacheHelper.saveDataSharedPreference(key: appLanguageSharedKey, value: 'ar');
+
+  print(CacheHelper.getDataFromSharedPreference(key: appLanguageSharedKey));
   runApp(EasyLocalization(
     supportedLocales: const [arabicLocal, englishLocal],
     path: assetPathLocalizations,

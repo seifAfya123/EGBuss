@@ -23,7 +23,7 @@ class CustomeTextFeild extends StatelessWidget {
     return Container(
       height: 7.h,
       alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(horizontal: 3.w),
+      // margin: EdgeInsets.symmetric(horizontal: 3.w),
       decoration: withShadow
           ? BoxDecoration(
               borderRadius: BorderRadius.circular(15),
@@ -38,18 +38,25 @@ class CustomeTextFeild extends StatelessWidget {
               ],
             )
           : BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(3.w),
               color: Colors.white,
             ),
       child: TextField(
+        // textAlign: TextAlign.center,
+
         keyboardType: userInputType,
         controller: textController,
-        cursorColor: MyThemeData.appyellow,
+        cursorColor: MyThemeData.appblue,
         decoration: InputDecoration(
+          // fillColor: MyThemeData.mywhite,
+          // filled: true,
           suffixIcon: action,
           prefixIcon: leading,
-          hintText: feildText,
-          // focusColor: Colors.red,
+          hintText: "  " + feildText,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(3.w)),
+            borderSide: BorderSide(color: MyThemeData.appblue, width: 0.5.w),
+          ),
           border: InputBorder.none,
           hintStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
                 fontSize: 15.sp,

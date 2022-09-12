@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:testapp/constants/const_test_data.dart';
+import 'package:testapp/presentation/router/rout_names_dart.dart';
 
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
@@ -12,34 +15,28 @@ class TicketsScreen extends StatelessWidget {
     return Scaffold(
       drawer: const MyDrawer(),
       appBar: AppBar(
-        title: Text('تذاكر'),
+        title: Text(
+          'تذاكر',
+        ),
       ),
       body: Center(
         child: BodyWhiteContainer(
-          bodyChild: Column(children: [
-            AvailableTickets(
-              ticketNumber: "#111111",
-              price: '200',
-              from: 'القاهرة',
-              to: 'الأسكندرية',
-              text1: 'تاريخ الرحلة',
-              text2: 'الأثنين,29اغسطس',
-              time: '10:30صباحا ',
-              type: 'vip',
-              typeColor: MyThemeData.appyellow,
-            ),
-            AvailableTickets(
-              ticketNumber: "#222222",
-              price: '150',
-              from: 'الأسكندرية',
-              to: 'القاهرة',
-              text1: 'تاريخ الرحلة',
-              text2: 'الأربعاء,7سبتمبر',
-              time: '10:30صباحا ',
-              type: 'Regular',
-              typeColor: MyThemeData.dappblue,
-            ),
-          ]),
+          withPadding: true,
+          bodyChild: ListView.builder(
+            itemCount: tickets.length,
+            itemBuilder: (BuildContext context, int index) {
+              return AvailableTickets(
+                ticket: tickets[index],
+                function: () {
+                  Navigator.pushNamed(
+                    context,
+                    RoutNamesDart.rTripTicketScreen,
+                    arguments: tickets[index],
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );

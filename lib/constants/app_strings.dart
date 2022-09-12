@@ -15,5 +15,7 @@ class AppStrings {
   // Lotti
   static const String flyingDeveloper = "";
 // SVG
+  static const String forgetPassword = "assets/Svgs/undraw_forgot_password.svg";
+  static const String egbussSvg = "assets/Svgs/logo3.svg";
   static const String svgAnalysis = "";
 }

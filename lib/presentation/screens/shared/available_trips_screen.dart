@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:testapp/constants/const_test_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/widget/available_ticket_widget.dart';
@@ -18,31 +19,11 @@ class AvailableTripsScreen extends StatelessWidget {
           title: const Text("الرحلات المتاحه"),
         ),
         body: Center(
-          child: Column(
-            children: [
-              AvailableTickets(
-                ticketNumber: "#111111",
-                price: '200',
-                from: 'القاهرة',
-                to: 'الأسكندرية',
-                text1: 'الكراسى المتاحة',
-                text2: '11 كرسى',
-                time: '10:30صباحا ',
-                type: 'vip',
-                typeColor: MyThemeData.appyellow,
-              ),
-              AvailableTickets(
-                ticketNumber: "#222222",
-                price: '150',
-                from: 'الأسكندرية',
-                to: 'القاهرة',
-                text1: 'الكراسى المتاحة',
-                text2: '11 كرسى',
-                time: '10:30صباحا ',
-                type: 'Regular',
-                typeColor: MyThemeData.dappblue,
-              ),
-            ],
+          child: ListView.builder(
+            itemCount: tickets.length,
+            itemBuilder: (BuildContext context, int index) {
+              return AvailableTickets(ticket: tickets[index],function: (){},);
+            },
           ),
         ),
       ),
