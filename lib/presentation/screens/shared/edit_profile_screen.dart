@@ -19,82 +19,85 @@ class EditProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: const AppbarTitleText(titleText: 'الملف الشخصى'),
       ),
-      body: Column(
-        children: [
-          Container(
-            margin:
-                EdgeInsets.only(top: 3.h, right: 5.w, left: 5.w, bottom: 1.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('الاسم'),
-                CustomeTextFeild(
-                  textController: nameController,
-                  feildText: 'ahmed',
-                  withShadow: true,
-                  userInputType: TextInputType.name,
-                  leading: Icon(Icons.person),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('رقم الهاتف'),
-                CustomeTextFeild(
-                  textController: phoneNumberController,
-                  feildText: '01215458865',
-                  withShadow: true,
-                  userInputType: TextInputType.number,
-                  leading: Icon(Icons.phone_iphone),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('البريد الألكترونى'),
-                CustomeTextFeild(
-                  textController: emailController,
-                  feildText: 'Ahmedmo@gmail.com',
-                  withShadow: true,
-                  userInputType: TextInputType.emailAddress,
-                  leading: Icon(Icons.email_outlined),
-                ),
-              ],
-            ),
-          ),
-          Container(
-              // color: Colors.red,
-              height: 30.h,
-              margin: EdgeInsets.symmetric(horizontal: 5.w),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin:
+                  EdgeInsets.only(top: 3.h, right: 5.w, left: 5.w, bottom: 1.h),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomElevatedButton(
-                    myWidgets: const DefaultButtonText(text: "تغيير كلمه السر"),
-                    otpressFunction: () {
-                      Navigator.pushNamed(
-                          context, RoutNamesDart.rAvailableTripsScreen);
-                    },
-                  ),
-                  CustomElevatedButton(
-                    myWidgets: const DefaultButtonText(text: "تاكيد"),
-                    otpressFunction: () {
-                      Navigator.pushNamed(
-                          context, RoutNamesDart.rAvailableTripsScreen);
-                    },
-                    buttonColor: MyThemeData.dappblue,
+                  Text('الاسم'),
+                  CustomeTextFeild(
+                    textController: nameController,
+                    feildText: 'ahmed',
+                    withShadow: true,
+                    userInputType: TextInputType.name,
+                    leading: Icon(Icons.person),
                   ),
                 ],
-              )),
-        ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('رقم الهاتف'),
+                  CustomeTextFeild(
+                    textController: phoneNumberController,
+                    feildText: '01215458865',
+                    withShadow: true,
+                    userInputType: TextInputType.number,
+                    leading: Icon(Icons.phone_iphone),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('البريد الألكترونى'),
+                  CustomeTextFeild(
+                    textController: emailController,
+                    feildText: 'Ahmedmo@gmail.com',
+                    withShadow: true,
+                    userInputType: TextInputType.emailAddress,
+                    leading: Icon(Icons.email_outlined),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+                // color: Colors.red,
+                height: 30.h,
+                margin: EdgeInsets.symmetric(horizontal: 5.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CustomElevatedButton(
+                      myWidgets:
+                          const DefaultButtonText(text: "تغيير كلمه السر"),
+                      otpressFunction: () {
+                        Navigator.pushNamed(
+                            context, RoutNamesDart.rAvailableTripsScreen);
+                      },
+                    ),
+                    CustomElevatedButton(
+                      myWidgets: const DefaultButtonText(text: "تاكيد"),
+                      otpressFunction: () {
+                        Navigator.pushNamed(
+                            context, RoutNamesDart.rAvailableTripsScreen);
+                      },
+                      buttonColor: MyThemeData.dappblue,
+                    ),
+                  ],
+                )),
+          ],
+        ),
       ),
     );
   }

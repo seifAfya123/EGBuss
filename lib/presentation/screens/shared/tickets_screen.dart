@@ -13,28 +13,30 @@ import 'package:testapp/presentation/widget/drawer.dart';
 class TicketsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: const MyDrawer(),
-      appBar: AppBar(
-        title: const AppbarTitleText(titleText: 'تذاكر'),
-      ),
-      body: Center(
-        child: BodyWhiteContainer(
-          withPadding: true,
-          bodyChild: ListView.builder(
-            itemCount: tickets.length,
-            itemBuilder: (BuildContext context, int index) {
-              return AvailableTickets(
-                ticket: tickets[index],
-                function: () {
-                  Navigator.pushNamed(
-                    context,
-                    RoutNamesDart.rTripTicketScreen,
-                    arguments: tickets[index],
-                  );
-                },
-              );
-            },
+    return SafeArea(
+      child: Scaffold(
+        drawer: const MyDrawer(),
+        appBar: AppBar(
+          title: const AppbarTitleText(titleText: 'تذاكر'),
+        ),
+        body: Center(
+          child: BodyWhiteContainer(
+            withPadding: true,
+            bodyChild: ListView.builder(
+              itemCount: tickets.length,
+              itemBuilder: (BuildContext context, int index) {
+                return AvailableTickets(
+                  ticket: tickets[index],
+                  function: () {
+                    Navigator.pushNamed(
+                      context,
+                      RoutNamesDart.rTripTicketScreen,
+                      arguments: tickets[index],
+                    );
+                  },
+                );
+              },
+            ),
           ),
         ),
       ),

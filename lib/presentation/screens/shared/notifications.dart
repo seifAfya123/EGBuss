@@ -18,25 +18,27 @@ class NotificationsScreen extends StatelessWidget {
       statusBarColor: MyThemeData.appblue,
     ));
 
-    return Scaffold(
-      drawer: const MyDrawer(),
-      appBar: AppBar(title: const AppbarTitleText(titleText: "الاشعارات")),
-      body: BodyWhiteContainer(
-        bodyChild: ListView.separated(
-          physics: const BouncingScrollPhysics(),
-          itemCount: constMessages.length,
-          separatorBuilder: (BuildContext context, int index) {
-            return Container(
-              margin: EdgeInsets.symmetric(horizontal: 10.w),
-              height: 0.5.w,
-              color: MyThemeData.dappDarkblue,
-            );
-          },
-          itemBuilder: (BuildContext context, int index) {
-            return NotificationContainer(
-              message: constMessages[index],
-            );
-          },
+    return SafeArea(
+      child: Scaffold(
+        drawer: const MyDrawer(),
+        appBar: AppBar(title: const AppbarTitleText(titleText: "الاشعارات")),
+        body: BodyWhiteContainer(
+          bodyChild: ListView.separated(
+            physics: const BouncingScrollPhysics(),
+            itemCount: constMessages.length,
+            separatorBuilder: (BuildContext context, int index) {
+              return Container(
+                margin: EdgeInsets.symmetric(horizontal: 10.w),
+                height: 0.5.w,
+                color: MyThemeData.dappDarkblue,
+              );
+            },
+            itemBuilder: (BuildContext context, int index) {
+              return NotificationContainer(
+                message: constMessages[index],
+              );
+            },
+          ),
         ),
       ),
     );
