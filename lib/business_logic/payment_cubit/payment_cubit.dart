@@ -14,6 +14,16 @@ class PaymentMethodCubit extends Cubit<PaymentMethodState> {
     emit(BeforeChangePaymentMethod());
     if (paymentMethod[paymentIndex] != PaymentMethod.choosed) {
       paymentMethod[paymentIndex] = PaymentMethod.choosed;
+      if (paymentIndex == 0) {
+        paymentMethod[1] = PaymentMethod.notChoosed;
+        paymentMethod[2] = PaymentMethod.notChoosed;
+      } else if (paymentIndex == 1) {
+        paymentMethod[0] = PaymentMethod.notChoosed;
+        paymentMethod[2] = PaymentMethod.notChoosed;
+      } else if (paymentIndex == 2) {
+        paymentMethod[0] = PaymentMethod.notChoosed;
+        paymentMethod[1] = PaymentMethod.notChoosed;
+      }
     }
     emit(ChangePaymentMethod());
   }

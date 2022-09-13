@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/business_logic/payment_cubit/payment_cubit.dart';
 import 'package:testapp/business_logic/payment_cubit/payment_state.dart';
+import 'package:testapp/constants/constant_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
@@ -71,19 +72,25 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
           icons: Icon(Icons.credit_card),
           text: "بطاقة ائتمان",
           ontap: () => myCubit.reserveSeat(0),
-          color: MyThemeData.appyellow,
+          color: lista[0] == PaymentMethod.choosed
+              ? MyThemeData.appyellow
+              : MyThemeData.appblue,
         ),
         OptionsInProfile(
           icons: Icon(Icons.credit_card),
-          text: "بطاقة ائتمان",
+          text: "فورى",
           ontap: () => myCubit.reserveSeat(1),
-          color: MyThemeData.appyellow,
+          color: lista[1] == PaymentMethod.choosed
+              ? MyThemeData.appyellow
+              : MyThemeData.appblue,
         ),
         OptionsInProfile(
           icons: Icon(Icons.credit_card),
-          text: "بطاقة ائتمان",
+          text: "امان",
           ontap: () => myCubit.reserveSeat(2),
-          color: MyThemeData.appyellow,
+          color: lista[2] == PaymentMethod.choosed
+              ? MyThemeData.appyellow
+              : MyThemeData.appblue,
         ),
         /**
          PaymentOptions(
