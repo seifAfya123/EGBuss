@@ -4,6 +4,7 @@ import 'package:testapp/constants/const_test_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
+import 'package:testapp/presentation/widget/appbar_title_text.dart';
 import 'package:testapp/presentation/widget/drawer.dart';
 import 'package:testapp/presentation/widget/notification_container.dart';
 import 'package:sizer/sizer.dart';
@@ -19,14 +20,7 @@ class NotificationsScreen extends StatelessWidget {
 
     return Scaffold(
       drawer: const MyDrawer(),
-      appBar: AppBar(
-          title: Text(
-        "الاشعارات",
-        style: Theme.of(context)
-            .textTheme
-            .headline1!
-            .copyWith(color: MyThemeData.mywhite),
-      )),
+      appBar: AppBar(title: const AppbarTitleText(titleText: "الاشعارات")),
       body: BodyWhiteContainer(
         bodyChild: ListView.separated(
           physics: const BouncingScrollPhysics(),

@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/business_logic/seat_reserver_cubit/seat_reserver_cubit.dart';
+import 'package:testapp/constants/end_points.dart';
+import 'package:testapp/data/local/cache_helper.dart';
+import 'package:testapp/presentation/router/rout_names_dart.dart';
+import 'package:testapp/presentation/styles/my_theme_data.dart';
+import 'package:testapp/presentation/view/body_white_container.dart';
+import 'package:testapp/presentation/widget/appbar_title_text.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/default_button_text.dart';
-import 'package:testapp/presentation/widget/from_to_text_container.dart';
+import 'package:testapp/presentation/widget/error_snack_bar.dart';
 import 'package:testapp/presentation/widget/seat.dart';
 
 class SeatReservation extends StatelessWidget {
@@ -14,136 +20,162 @@ class SeatReservation extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("اختر مقعدك"),
-        ),
-        body: Column(
-          children: [
-            const FromToTextContainer(),
-            Container(
-              height: 15.h,
-              padding: EdgeInsets.symmetric(horizontal: 5.w),
-              decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                  top: BorderSide(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                ),
-              ),
-              child: Row(
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
-                      Text("غير متاح"),
-                      Text("متاح"),
-                    ],
-                  ),
-                  SizedBox(width: 5.w),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.w),
-                          color: Colors.red,
-                        ),
-                        width: 5.w,
-                        height: 5.w,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.w),
-                          color: Colors.grey,
-                        ),
-                        width: 5.w,
-                        height: 5.w,
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("#56465223"),
-                      Row(
+        appBar: AppBar(title: const AppbarTitleText(titleText: "اختر مقعدك")),
+        body: BodyWhiteContainer(
+          withPadding: true,
+          bodyChild: BlocProvider(
+            create: (context) => SeatReserverCubit()..getSeatsFromApi(),
+            child: BlocConsumer<SeatReserverCubit, SeatReserverState>(
+              listener: (context, state) {
+                if (state is MoreSeatsState) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      ErrorSnackBar(errorText: MoreSeatsState.errorText));
+                }
+              },
+              builder: (context, state) {
+                SeatReserverCubit mycubit =
+                    BlocProvider.of<SeatReserverCubit>(context);
+                return Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 3.w),
+                      height: 10.h,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            "12:30 PM",
-                            textDirection: TextDirection.ltr,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("المقاعد",
+                                  style: Theme.of(context).textTheme.bodyText1),
+                              mycubit.choosenSeats.isEmpty
+                                  ? const Text("اختر مقعدك")
+                                  : choosenSeats(mycubit.choosenSeats)
+                            ],
                           ),
-                          Icon(
-                            Icons.bus_alert,
-                            size: 15.w,
+                          SizedBox(
+                            width: 40.w,
+                            height: 7.h,
+                            child: CustomElevatedButton(
+                              myWidgets: const DefaultButtonText(text: "حجز"),
+                              otpressFunction: () {
+                                Navigator.pushNamed(context,
+                                    RoutNamesDart.rConfirmReservationScreen);
+                              },
+                            ),
                           )
                         ],
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                    seatsList(mycubit),
+                    SizedBox(
+                      height: 7.h,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          guide(
+                              circleColor: MyThemeData.appyellow,
+                              titleText: "تم اختياره",
+                              context: context),
+                          guide(
+                              circleColor: Colors.grey,
+                              titleText: "متاح",
+                              context: context),
+                          guide(
+                              circleColor: MyThemeData.appDarkblue,
+                              titleText: "غير متاح",
+                              context: context),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
-            Expanded(
-              child: BlocBuilder<SeatReserverCubit, SeatReserverState>(
-                builder: (context, state) {
-                  if (state is ChangeSeateState) {}
-                  SeatReserverCubit mycubit =
-                      BlocProvider.of<SeatReserverCubit>(context);
-                  return ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: mycubit.seatsStatus.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return carRow(
-                        index,
-                        mycubit.seatsStatus[index],
-                        mycubit,
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-            CustomElevatedButton(
-              myWidgets: const DefaultButtonText(text: 'احجز الان'),
-              otpressFunction: () {},
-            ),
-            SizedBox(height: 5.h)
-          ],
+          ),
         ),
       ),
     );
   }
 
-  carRow(index, lista, SeatReserverCubit myCubit) {
+  Widget choosenSeats(List<String> seatsNumbers) {
+    String data = "";
+    for (var seat in seatsNumbers) {
+      CacheHelper.getDataFromSharedPreference(key: appLanguageSharedKey) == 'ar'
+          ? data += "$seat ,"
+          : data += ", $seat";
+    }
+    return Text(data, textDirection: TextDirection.ltr);
+  }
+
+  Widget guide({
+    required Color circleColor,
+    required String titleText,
+    required BuildContext context,
+  }) {
+    return Row(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 1.w),
+          width: 5.w,
+          decoration: BoxDecoration(shape: BoxShape.circle, color: circleColor),
+        ),
+        Text(titleText, style: Theme.of(context).textTheme.bodyText1)
+      ],
+    );
+  }
+
+  Widget seatsList(SeatReserverCubit mycubit) {
+    return Expanded(
+      child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        itemCount: mycubit.seatsStatus.length,
+        itemBuilder: (BuildContext context, int index) {
+          return carRow(index, mycubit, context);
+        },
+      ),
+    );
+  }
+
+  carRow(int index, SeatReserverCubit myCubit, BuildContext context) {
+    List<Widget> seats = [];
+    for (int i = 0; i < myCubit.seatsStatus[index].length; i++) {
+      seats.add(
+        Seat(
+          seatStatus: myCubit.seatsStatus[index][i],
+          fun: () => myCubit.reserveSeat(index, i),
+        ),
+      );
+    }
+    seats.add(
+      Text(index.toString(), style: Theme.of(context).textTheme.bodyText2),
+    );
     return Container(
       margin: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.w),
-      height: 10.h,
-      child: Row(
+      child: Column(
         children: [
-          Seat(
-            seatStatus: lista[0],
-            fun: () => myCubit.reserveSeat(index, 0),
-          ),
-          const Spacer(flex: 1),
-          Seat(
-            seatStatus: lista[1],
-            fun: () => myCubit.reserveSeat(index, 1),
-          ),
-          const Spacer(flex: 4),
-          Seat(
-            seatStatus: lista[2],
-            fun: () => myCubit.reserveSeat(index, 2),
-          ),
-          const Spacer(flex: 1),
-          Seat(
-            seatStatus: lista[3],
-            fun: () => myCubit.reserveSeat(index, 3),
+          index == 0
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      margin:
+                          EdgeInsets.only(left: 3.w, right: 3.w, bottom: 3.h),
+                      height: 15.w,
+                      width: 35.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(3.w),
+                        color: MyThemeData.appDarkblue,
+                      ),
+                      child: const DefaultButtonText(text: "السائق"),
+                    ),
+                  ],
+                )
+              : Container(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: seats,
           ),
         ],
       ),

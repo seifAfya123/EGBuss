@@ -5,6 +5,7 @@ import 'package:testapp/data/models/mesasge.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
 import 'package:sizer/sizer.dart';
+import 'package:testapp/presentation/widget/appbar_title_text.dart';
 
 class NotificationDetailsScreen extends StatelessWidget {
   const NotificationDetailsScreen({
@@ -22,7 +23,7 @@ class NotificationDetailsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("الاشعارات"),
+          title: const AppbarTitleText(titleText: "الاشعارات"),
         ),
         body: BodyWhiteContainer(
           withPadding: true,

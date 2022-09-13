@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
+import 'package:testapp/presentation/widget/appbar_title_text.dart';
 
 class ContactUs extends StatelessWidget {
   const ContactUs({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class ContactUs extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("تواصل معنا"),
+          title: const AppbarTitleText(titleText: "تواصل معنا"),
         ),
         body: Center(
           child: BodyWhiteContainer(

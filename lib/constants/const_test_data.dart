@@ -1,3 +1,4 @@
+import 'package:testapp/constants/constant_data.dart';
 import 'package:testapp/data/models/mesasge.dart';
 import 'package:testapp/data/models/ticket.dart';
 
@@ -44,4 +45,70 @@ List<Ticket> tickets = [
     time: '10:30صباحا ',
     type: 'Regular',
   ),
+];
+
+List<List<SeatStatus>> seatsStatusFakeData = [
+  [
+    SeatStatus.notAvailable,
+    SeatStatus.available,
+    SeatStatus.lane,
+    SeatStatus.notAvailable,
+    SeatStatus.notAvailable,
+  ],
+  [
+    SeatStatus.available,
+    SeatStatus.available,
+    SeatStatus.lane,
+    SeatStatus.notAvailable,
+    SeatStatus.notAvailable,
+  ],
+  [
+    SeatStatus.notAvailable,
+    SeatStatus.available,
+    SeatStatus.lane,
+    SeatStatus.notAvailable,
+    SeatStatus.notAvailable,
+  ],
+  [
+    SeatStatus.notAvailable,
+    SeatStatus.available,
+    SeatStatus.lane,
+    SeatStatus.notAvailable,
+    SeatStatus.notAvailable,
+  ],
+  [
+    SeatStatus.notAvailable,
+    SeatStatus.available,
+    SeatStatus.lane,
+    SeatStatus.notAvailable,
+    SeatStatus.available,
+  ],
+  [
+    SeatStatus.notAvailable,
+    SeatStatus.notAvailable,
+    SeatStatus.lane,
+    SeatStatus.notAvailable,
+    SeatStatus.available,
+  ],
+  [
+    SeatStatus.notAvailable,
+    SeatStatus.available,
+    SeatStatus.lane,
+    SeatStatus.available,
+    SeatStatus.notAvailable,
+  ],
+  [
+    SeatStatus.available,
+    SeatStatus.available,
+    SeatStatus.lane,
+    SeatStatus.notAvailable,
+    SeatStatus.notAvailable,
+  ],
+  [
+    SeatStatus.notAvailable,
+    SeatStatus.notAvailable,
+    SeatStatus.available,
+    SeatStatus.available,
+    SeatStatus.available,
+  ],
 ];

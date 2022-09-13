@@ -20,6 +20,7 @@ class RoutNamesDart {
   static const String rEditProfileScreen = "rEditProfileScreen";
   static const String rSelecTripScreen = "rSelecTripScreen";
   static const String rticketDetailsScreen = "rticketDetailsScreen";
+  static const String rConfirmReservationScreen = "rConfirmReservationScreen";
 
   static const String rprivacyPolicy = "rprivacyPolicy  ";
   static const String rOldTicketsScreen = "rOldTicketsScreen  ";

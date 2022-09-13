@@ -6,6 +6,7 @@ import 'package:testapp/presentation/router/rout_names_dart.dart';
 
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
+import 'package:testapp/presentation/widget/appbar_title_text.dart';
 import 'package:testapp/presentation/widget/available_ticket_widget.dart';
 import 'package:testapp/presentation/widget/drawer.dart';
 
@@ -15,9 +16,7 @@ class TicketsScreen extends StatelessWidget {
     return Scaffold(
       drawer: const MyDrawer(),
       appBar: AppBar(
-        title: Text(
-          'تذاكر',
-        ),
+        title: const AppbarTitleText(titleText: 'تذاكر'),
       ),
       body: Center(
         child: BodyWhiteContainer(

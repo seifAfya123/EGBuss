@@ -5,6 +5,7 @@ import 'package:testapp/data/network/requests/login%20and%20reqister%20req/owner
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/screens/shared/about_us.dart';
 import 'package:testapp/presentation/screens/shared/available_trips_screen.dart';
+import 'package:testapp/presentation/screens/shared/confirm_reservation_screen.dart';
 import 'package:testapp/presentation/screens/shared/contact_us.dart';
 import 'package:testapp/presentation/screens/shared/edit_profile_screen.dart';
 import 'package:testapp/presentation/screens/shared/login_screen.dart';
@@ -55,6 +56,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => NotificationsScreen());
       case RoutNamesDart.rSelecTripScreen:
         return MaterialPageRoute(builder: (_) => SelectTripScreen());
+      case RoutNamesDart.rConfirmReservationScreen:
+        return MaterialPageRoute(builder: (_) => ConfirmReservationScreen());
       case RoutNamesDart.rTripTicketScreen:
         Ticket args = settings.arguments as Ticket;
         return MaterialPageRoute(
