@@ -10,7 +10,6 @@ import 'package:testapp/presentation/view/default_app_bar.dart';
 import 'package:testapp/presentation/widget/credit_payment_method_widget.dart';
 import 'package:testapp/presentation/widget/custom_text_feild.dart';
 import 'package:testapp/presentation/widget/options_in_profile.dart';
-import 'package:testapp/presentation/widget/payment_opyions.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
   PaymentMethodScreen({Key? key}) : super(key: key);
@@ -68,7 +67,26 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        PaymentOptions(
+        OptionsInProfile(
+          icons: Icon(Icons.credit_card),
+          text: "بطاقة ائتمان",
+          ontap: () => myCubit.reserveSeat(0),
+          color: MyThemeData.appyellow,
+        ),
+        OptionsInProfile(
+          icons: Icon(Icons.credit_card),
+          text: "بطاقة ائتمان",
+          ontap: () => myCubit.reserveSeat(1),
+          color: MyThemeData.appyellow,
+        ),
+        OptionsInProfile(
+          icons: Icon(Icons.credit_card),
+          text: "بطاقة ائتمان",
+          ontap: () => myCubit.reserveSeat(2),
+          color: MyThemeData.appyellow,
+        ),
+        /**
+         PaymentOptions(
             icons: const Icon(Icons.abc),
             text: 'امان',
             fun: () => myCubit.reserveSeat(0),
@@ -83,6 +101,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
             text: 'بطاقة ائتمان',
             fun: () => myCubit.reserveSeat(2),
             paymentOptions: lista[0]),
+        */
       ],
     );
   }

@@ -44,18 +44,18 @@ class ProfileScreen extends StatelessWidget {
               children: [
                 OptionsInProfile(
                   text: 'مساعده',
-                  route: '',
                   icons: const Icon(Icons.help_outline),
+                  color: MyThemeData.appyellow,
                 ),
                 OptionsInProfile(
                   text: 'الأعدادات',
-                  route: '',
                   icons: const Icon(Icons.settings),
+                  color: MyThemeData.appyellow,
                 ),
                 OptionsInProfile(
                   text: 'التذاكر السابقة',
                   icons: const Icon(Icons.history),
-                  route: RoutNamesDart.rOldTicketsScreen,
+                  color: MyThemeData.appyellow,
                 )
               ],
             ),

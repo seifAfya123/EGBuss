@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
 import 'package:testapp/presentation/widget/appbar_title_text.dart';
@@ -44,7 +45,10 @@ class ConfirmReservationScreen extends StatelessWidget {
                   CustomElevatedButton(
                     buttonColor: MyThemeData.appblue,
                     myWidgets: const DefaultButtonText(text: "تاكيد"),
-                    otpressFunction: () {},
+                    otpressFunction: () {
+                      Navigator.pushNamed(
+                          context, RoutNamesDart.rPaymentMethodScreen);
+                    },
                   )
                 ],
               ),

@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:testapp/business_logic/bloc_observer.dart';
 import 'package:testapp/business_logic/global_cubit/global_cubit.dart';
 import 'package:testapp/business_logic/login_cubit/login_cubit.dart';
+import 'package:testapp/business_logic/payment_cubit/payment_cubit.dart';
 import 'package:testapp/business_logic/register_cubit/register_cubit.dart';
 import 'package:testapp/business_logic/seat_reserver_cubit/seat_reserver_cubit.dart';
 import 'package:testapp/constants/app_strings.dart';
@@ -74,6 +75,7 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: ((context) => LoginCubit())),
         BlocProvider(create: ((context) => RegisterCubit())),
         BlocProvider(create: ((context) => SeatReserverCubit())),
+        BlocProvider(create: ((context) => PaymentMethodCubit())),
       ],
       child: BlocConsumer<GlobalCubit, GlobalState>(
         listener: (context, state) {},

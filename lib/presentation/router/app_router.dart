@@ -14,6 +14,7 @@ import 'package:testapp/presentation/screens/shared/notification_details_screen.
 import 'package:testapp/presentation/screens/shared/notifications.dart';
 import 'package:testapp/presentation/screens/shared/old_tickets_screen.dart';
 import 'package:testapp/presentation/screens/shared/otp_screen.dart';
+import 'package:testapp/presentation/screens/shared/payment_screen.dart';
 import 'package:testapp/presentation/screens/shared/privacy_and_policy.dart';
 
 import 'package:testapp/presentation/screens/shared/profile_screen.dart';
@@ -58,6 +59,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => SelectTripScreen());
       case RoutNamesDart.rConfirmReservationScreen:
         return MaterialPageRoute(builder: (_) => ConfirmReservationScreen());
+      case RoutNamesDart.rPaymentMethodScreen:
+        return MaterialPageRoute(builder: (_) => PaymentMethodScreen());
       case RoutNamesDart.rTripTicketScreen:
         Ticket args = settings.arguments as Ticket;
         return MaterialPageRoute(
