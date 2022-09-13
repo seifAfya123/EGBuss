@@ -3,6 +3,7 @@ import 'package:sizer/sizer.dart';
 import 'package:testapp/constants/const_test_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
+import 'package:testapp/presentation/widget/appbar_title_text.dart';
 import 'package:testapp/presentation/widget/available_ticket_widget.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/default_button_text.dart';
@@ -16,7 +17,7 @@ class AvailableTripsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("الرحلات المتاحه"),
+          title: const AppbarTitleText(titleText: "الرحلات المتاحه"),
         ),
         body: Center(
           child: ListView.builder(

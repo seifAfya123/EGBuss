@@ -7,6 +7,7 @@ import 'package:testapp/constants/constant_data.dart';
 import 'package:testapp/data/models/ticket.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
+import 'package:testapp/presentation/widget/appbar_title_text.dart';
 import 'package:testapp/presentation/widget/custom_image_container.dart';
 
 class TicketDetailsScreen extends StatelessWidget {
@@ -20,9 +21,7 @@ class TicketDetailsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'تذاكر',
-          ),
+          title: const AppbarTitleText(titleText: 'تذاكر'),
         ),
         body: Center(
           child: Container(

@@ -7,15 +7,14 @@ import 'package:testapp/constants/constant_data.dart';
 import 'package:testapp/data/models/user.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
-import 'package:testapp/presentation/widget/custom_cicular_image.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/custom_text_feild.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:testapp/presentation/widget/default_button_text.dart';
+import 'package:testapp/presentation/widget/error_snack_bar.dart';
 import 'package:testapp/presentation/widget/loading_data_widget.dart';
-import 'package:testapp/presentation/widget/svg_icon_viwer.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -23,7 +22,7 @@ class LoginScreen extends StatelessWidget {
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: MyThemeData.backGroundColor,
     ));
     return SafeArea(
@@ -79,12 +78,12 @@ class LoginScreen extends StatelessWidget {
                       buttonColor: MyThemeData.appblue,
                       myWidgets: const DefaultButtonText(text: "تسجيل الدخول"),
                       otpressFunction: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            snackbarWidget(ConstValidations.loginValidation(
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(ErrorSnackBar(
+                                errorText: ConstValidations.loginValidation(
                           phone: phoneNumberController.text,
                           password: passwordController.text,
                         )));
-
                         // mycubit.loginUser(
                         //   UserModel(
                         //     phone: phoneNumberController.text,
@@ -123,11 +122,4 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  snackbarWidget(String text) {
-    return SnackBar(
-      content: Text(text),
-      backgroundColor: Colors.red,
-      duration: const Duration(milliseconds: 1500),
-    );
-  }
 }

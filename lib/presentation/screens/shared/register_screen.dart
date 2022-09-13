@@ -10,6 +10,7 @@ import 'package:testapp/presentation/widget/custom_text_feild.dart';
 import 'package:testapp/presentation/widget/default_button_text.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testapp/presentation/widget/error_snack_bar.dart';
 
 import 'package:testapp/presentation/widget/loading_data_widget.dart';
 
@@ -34,9 +35,8 @@ class RegisterScreen extends StatelessWidget {
         body: BlocConsumer<RegisterCubit, RegisterState>(
           listener: (context, state) {
             if (state is SuccessState) {
-              Navigator.pushNamed(
-                  context, RoutNamesDart.rOTPScreen);
-                  // context, RoutNamesDart.rHomeScreen);
+              Navigator.pushNamed(context, RoutNamesDart.rOTPScreen);
+              // context, RoutNamesDart.rHomeScreen);
             }
           },
           builder: (context, state) {
@@ -70,7 +70,6 @@ class RegisterScreen extends StatelessWidget {
                         Container(
                           width: 40.w,
                           child: CustomElevatedButton(
-
                               buttonColor: MyThemeData.appGery,
                               myWidgets: Text("Male"),
                               otpressFunction: () {}),
@@ -146,14 +145,6 @@ class RegisterScreen extends StatelessWidget {
     );
   }
 
-  snackbarWidget(String text) {
-    return SnackBar(
-      content: Text(text),
-      backgroundColor: Colors.red,
-      duration: const Duration(milliseconds: 1500),
-    );
-  }
-
   gotoOTPSCreen(RegisterCubit mycubit, BuildContext context) {
     var x = ConstValidations.validateAllFeilds(
       controllersList: [
@@ -175,7 +166,8 @@ class RegisterScreen extends StatelessWidget {
         ),
       );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(snackbarWidget(x ?? "error"));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(ErrorSnackBar(errorText: x ?? "error"));
     }
   }
 }

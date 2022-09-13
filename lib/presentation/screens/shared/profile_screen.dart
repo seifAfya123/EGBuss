@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
+import 'package:testapp/presentation/widget/appbar_title_text.dart';
 import 'package:testapp/presentation/widget/custom_cicular_image.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/default_button_text.dart';
@@ -23,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: MyThemeData.backGroundColor,
         drawer: MyDrawer(),
         appBar: AppBar(
-          title: const Text("الملف الشخصي"),
+          title: const AppbarTitleText(titleText: "الملف الشخصي"),
           actions: [
             InkWell(
               onTap: (() {

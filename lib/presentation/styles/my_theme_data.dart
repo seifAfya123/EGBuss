@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -41,7 +42,12 @@ class MyThemeData {
         ),
       ),
     ),
+    // cupertinoOverrideTheme: CupertinoThemeData(
+    //   scaffoldBackgroundColor: backGroundColor,
+    //   primaryColor: appblue, // HERE COLOR OF LEADING
+    // ),
     appBarTheme: const AppBarTheme(
+      
       backgroundColor: appblue,
       elevation: 0,
       centerTitle: true,

@@ -7,4 +7,4 @@ class ConstantData {
   static String qrCode = "assets/images/qrCodeExample.png";
 }
 
-enum SeatStatus { available, notAvailable, choosed }
+enum SeatStatus { available, notAvailable, choosed , lane, driver}
