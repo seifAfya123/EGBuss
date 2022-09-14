@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:testapp/presentation/styles/my_theme_data.dart';
+import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/custom_text_feild.dart';
+import 'package:testapp/presentation/widget/default_button_text.dart';
 
 class CreditPaymentMethod extends StatelessWidget {
   CreditPaymentMethod({Key? key}) : super(key: key);
@@ -14,7 +17,7 @@ class CreditPaymentMethod extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 1.5.w),
+          padding: EdgeInsets.only(right: 1.5.w),
           child: Row(
             children: [
               Text('2- ادخل التفاصيل'),
@@ -118,6 +121,14 @@ class CreditPaymentMethod extends StatelessWidget {
             ),
           ],
         ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5.5.w, vertical: 2.h),
+          child: CustomElevatedButton(
+            buttonColor: MyThemeData.appblue,
+            myWidgets: const DefaultButtonText(text: "تاكيد"),
+            otpressFunction: () {},
+          ),
+        )
       ],
     );
   }

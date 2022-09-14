@@ -28,37 +28,53 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
       ),
       body: Center(
           child: BodyWhiteContainer(
-        bodyChild: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(1.5.w),
-              child: Row(
-                children: [
-                  Text('المجموع:'),
-                  Text(' 300 جنيه'),
-                ],
+        withPadding: true,
+        bodyChild: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(1.5.w),
+                child: Row(
+                  children: [
+                    Text('المجموع:'),
+                    Text(' 300 جنيه'),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 1.5.w),
-              child: Row(
-                children: [
-                  Text('1- اختر طريقه الدفع'),
-                ],
+              Padding(
+                padding: EdgeInsets.only(left: 1.5.w),
+                child: Row(
+                  children: [
+                    Text('1- اختر طريقه الدفع'),
+                  ],
+                ),
               ),
-            ),
-            BlocBuilder<PaymentMethodCubit, PaymentMethodState>(
-              builder: (context, state) {
-                if (state is ChangePaymentMethod) {}
-                PaymentMethodCubit mycubit =
-                    BlocProvider.of<PaymentMethodCubit>(context);
-                return paymentRow(
-                  mycubit.paymentMethod,
-                  mycubit,
-                );
-              },
-            ),
-          ],
+              BlocBuilder<PaymentMethodCubit, PaymentMethodState>(
+                builder: (context, state) {
+                  if (state is ChangePaymentMethod) {}
+                  PaymentMethodCubit mycubit =
+                      BlocProvider.of<PaymentMethodCubit>(context);
+                  return Column(
+                    children: [
+                      paymentRow(
+                        mycubit.paymentMethod,
+                        mycubit,
+                      ),
+                      mycubit.paymentMethod[0] == PaymentMethod.choosed
+                          ? CreditPaymentMethod()
+                          : mycubit.paymentMethod[1] == PaymentMethod.choosed
+                              ? Container(
+                                  child: Text('Fawry'),
+                                )
+                              : Container(
+                                  child: Text('Aman'),
+                                )
+                    ],
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       )),
     );
@@ -72,43 +88,20 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
           icons: Icon(Icons.credit_card),
           text: "بطاقة ائتمان",
           ontap: () => myCubit.reserveSeat(0),
-          color: lista[0] == PaymentMethod.choosed
-              ? MyThemeData.appyellow
-              : MyThemeData.appblue,
+          paymentOptions: lista[0],
         ),
         OptionsInProfile(
           icons: Icon(Icons.credit_card),
           text: "فورى",
           ontap: () => myCubit.reserveSeat(1),
-          color: lista[1] == PaymentMethod.choosed
-              ? MyThemeData.appyellow
-              : MyThemeData.appblue,
+          paymentOptions: lista[1],
         ),
         OptionsInProfile(
           icons: Icon(Icons.credit_card),
           text: "امان",
           ontap: () => myCubit.reserveSeat(2),
-          color: lista[2] == PaymentMethod.choosed
-              ? MyThemeData.appyellow
-              : MyThemeData.appblue,
+          paymentOptions: lista[2],
         ),
-        /**
-         PaymentOptions(
-            icons: const Icon(Icons.abc),
-            text: 'امان',
-            fun: () => myCubit.reserveSeat(0),
-            paymentOptions: lista[2]),
-        PaymentOptions(
-            icons: const Icon(Icons.abc),
-            text: 'فوري',
-            fun: () => myCubit.reserveSeat(1),
-            paymentOptions: lista[1]),
-        PaymentOptions(
-            icons: const Icon(Icons.credit_card),
-            text: 'بطاقة ائتمان',
-            fun: () => myCubit.reserveSeat(2),
-            paymentOptions: lista[0]),
-        */
       ],
     );
   }

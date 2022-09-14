@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:testapp/constants/constant_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/widget/appbar_title_text.dart';
@@ -43,16 +44,22 @@ class ProfileScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 OptionsInProfile(
+                  ontap: () {},
+                  paymentOptions: PaymentMethod.choosed,
                   text: 'مساعده',
                   icons: const Icon(Icons.help_outline),
                   color: MyThemeData.appyellow,
                 ),
                 OptionsInProfile(
+                  ontap: () {},
+                  paymentOptions: PaymentMethod.choosed,
                   text: 'الأعدادات',
                   icons: const Icon(Icons.settings),
                   color: MyThemeData.appyellow,
                 ),
                 OptionsInProfile(
+                  ontap: () {},
+                  paymentOptions: PaymentMethod.choosed,
                   text: 'التذاكر السابقة',
                   icons: const Icon(Icons.history),
                   color: MyThemeData.appyellow,

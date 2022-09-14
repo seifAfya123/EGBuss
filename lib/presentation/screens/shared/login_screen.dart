@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                       textController: passwordController,
                       feildText: "كلمه السر",
                       withShadow: true,
-                      userInputType: TextInputType.number,
+                      userInputType: TextInputType.text,
                       action: const Icon(Icons.password_rounded),
                     ),
                     SizedBox(height: 2.5.h),
@@ -78,18 +78,20 @@ class LoginScreen extends StatelessWidget {
                       buttonColor: MyThemeData.appblue,
                       myWidgets: const DefaultButtonText(text: "تسجيل الدخول"),
                       otpressFunction: () {
-                        ScaffoldMessenger.of(context)
+                        /**
+                         ScaffoldMessenger.of(context)
                             .showSnackBar(ErrorSnackBar(
                                 errorText: ConstValidations.loginValidation(
                           phone: phoneNumberController.text,
                           password: passwordController.text,
                         )));
-                        // mycubit.loginUser(
-                        //   UserModel(
-                        //     phone: phoneNumberController.text,
-                        //     password: passwordController.text,
-                        //   ),
-                        // );
+                         */
+                        mycubit.loginUser(
+                          UserModel(
+                            phone: phoneNumberController.text,
+                            password: passwordController.text,
+                          ),
+                        );
                       },
                     ),
                     SizedBox(height: 2.h),
@@ -121,5 +123,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
 }
