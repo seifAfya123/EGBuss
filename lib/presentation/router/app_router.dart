@@ -8,6 +8,7 @@ import 'package:testapp/presentation/screens/shared/available_trips_screen.dart'
 import 'package:testapp/presentation/screens/shared/confirm_reservation_screen.dart';
 import 'package:testapp/presentation/screens/shared/contact_us.dart';
 import 'package:testapp/presentation/screens/shared/edit_profile_screen.dart';
+import 'package:testapp/presentation/screens/shared/loginFirst_screen.dart';
 import 'package:testapp/presentation/screens/shared/login_screen.dart';
 
 import 'package:testapp/presentation/screens/shared/notification_details_screen.dart';
@@ -78,6 +79,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => OldTicketsScreen());
       case RoutNamesDart.rMyTicketsScreen:
         return MaterialPageRoute(builder: (_) => TicketsScreen());
+      case RoutNamesDart.rLoginFirstScreen:
+        return MaterialPageRoute(builder: (_) => LoginFirstScreen());
       case RoutNamesDart.rOTPScreen:
         OwnerRegisterRequest owner = OwnerRegisterRequest(phone: "01012720084");
         return MaterialPageRoute(
