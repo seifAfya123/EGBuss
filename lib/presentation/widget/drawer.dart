@@ -51,7 +51,7 @@ class MyDrawer extends StatelessWidget {
                     Navigator.pushReplacementNamed(
                         context, RoutNamesDart.rNotificationsScreen);
                   } else {
-                    Navigator.pushReplacementNamed(
+                    Navigator.pushNamed(
                         context, RoutNamesDart.rLoginFirstScreen);
                   }
                 },
@@ -65,8 +65,7 @@ class MyDrawer extends StatelessWidget {
                   Navigator.pushReplacementNamed(
                       context, RoutNamesDart.rMyTicketsScreen);
                 } else {
-                  Navigator.pushReplacementNamed(
-                      context, RoutNamesDart.rLoginFirstScreen);
+                  Navigator.pushNamed(context, RoutNamesDart.rLoginFirstScreen);
                 }
               },
               icons: const Icon(CupertinoIcons.tickets,

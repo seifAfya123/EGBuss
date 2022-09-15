@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
@@ -14,9 +15,9 @@ class LoginFirstScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: const MyDrawer(),
-        appBar: AppBar(
-          title: const AppbarTitleText(titleText: "الملف الشخصي"),
+        appBar: const CupertinoNavigationBar(
+          leading: CupertinoNavigationBarBackButton(color: Colors.white),
+          backgroundColor: MyThemeData.appblue,
         ),
         body: BodyWhiteContainer(
           withPadding: true,

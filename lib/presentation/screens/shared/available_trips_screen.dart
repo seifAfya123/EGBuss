@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/constants/const_test_data.dart';
@@ -16,14 +17,19 @@ class AvailableTripsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const AppbarTitleText(titleText: "الرحلات المتاحه"),
+        appBar: const CupertinoNavigationBar(
+          leading: CupertinoNavigationBarBackButton(color: Colors.white),
+          backgroundColor: MyThemeData.appblue,
+          middle: AppbarTitleText(titleText: "الرحلات المتاحه"),
         ),
         body: Center(
           child: ListView.builder(
             itemCount: tickets.length,
             itemBuilder: (BuildContext context, int index) {
-              return AvailableTickets(ticket: tickets[index],function: (){},);
+              return AvailableTickets(
+                ticket: tickets[index],
+                function: () {},
+              );
             },
           ),
         ),

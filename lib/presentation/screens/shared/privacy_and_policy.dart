@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
@@ -15,8 +16,10 @@ class PrivacyAndPolicy extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const AppbarTitleText(titleText: "الامان و الخصوصيه"),
+        appBar: const CupertinoNavigationBar(
+          leading: CupertinoNavigationBarBackButton(color: Colors.white),
+          backgroundColor: MyThemeData.appblue,
+          middle: AppbarTitleText(titleText: "الامان و الخصوصيه"),
         ),
         body: Center(
           child: BodyWhiteContainer(

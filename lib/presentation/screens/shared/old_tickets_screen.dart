@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/constants/const_test_data.dart';
 
@@ -12,8 +13,10 @@ class OldTicketsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(
-            title: const AppbarTitleText(titleText: 'تذاكر قديمة'),
+          appBar: const CupertinoNavigationBar(
+            leading: CupertinoNavigationBarBackButton(color: Colors.white),
+            backgroundColor: MyThemeData.appblue,
+            middle: AppbarTitleText(titleText: 'تذاكر قديمة'),
           ),
           body: BodyWhiteContainer(
             withPadding: true,

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
@@ -16,8 +17,10 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyThemeData.backGroundColor,
-      appBar: AppBar(
-        title: const AppbarTitleText(titleText: 'الملف الشخصى'),
+      appBar: const CupertinoNavigationBar(
+        leading: CupertinoNavigationBarBackButton(color: Colors.white),
+        backgroundColor: MyThemeData.appblue,
+        middle: AppbarTitleText(titleText: 'الملف الشخصى'),
       ),
       body: SingleChildScrollView(
         child: Column(

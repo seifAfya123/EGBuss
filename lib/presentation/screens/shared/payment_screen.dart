@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
@@ -8,6 +9,7 @@ import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
 import 'package:testapp/presentation/view/default_app_bar.dart';
+import 'package:testapp/presentation/widget/appbar_title_text.dart';
 import 'package:testapp/presentation/widget/credit_payment_method_widget.dart';
 import 'package:testapp/presentation/widget/custom_text_feild.dart';
 import 'package:testapp/presentation/widget/options_in_profile.dart';
@@ -23,8 +25,10 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: (Text('طرق الدفع')),
+      appBar: const CupertinoNavigationBar(
+        leading: CupertinoNavigationBarBackButton(color: Colors.white),
+        backgroundColor: MyThemeData.appblue,
+        middle: AppbarTitleText(titleText: 'طرق الدفع'),
       ),
       body: Center(
           child: BodyWhiteContainer(

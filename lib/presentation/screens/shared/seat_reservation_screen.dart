@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
@@ -20,7 +21,11 @@ class SeatReservation extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: const AppbarTitleText(titleText: "اختر مقعدك")),
+        appBar: const CupertinoNavigationBar(
+          leading: CupertinoNavigationBarBackButton(color: Colors.white),
+          backgroundColor: MyThemeData.appblue,
+          middle: AppbarTitleText(titleText: "اختر مقعدك"),
+        ),
         body: BodyWhiteContainer(
           withPadding: true,
           bodyChild: BlocProvider(
@@ -55,8 +60,8 @@ class SeatReservation extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            width: 40.w,
-                            height: 7.h,
+                            width: 38.w,
+                            height: 9.h,
                             child: CustomElevatedButton(
                               myWidgets: const DefaultButtonText(text: "حجز"),
                               otpressFunction: () {
