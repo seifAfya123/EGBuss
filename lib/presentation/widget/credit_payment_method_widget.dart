@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:testapp/constants/const_test_data.dart';
+import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/custom_text_feild.dart';
@@ -126,7 +128,12 @@ class CreditPaymentMethod extends StatelessWidget {
           child: CustomElevatedButton(
             buttonColor: MyThemeData.appblue,
             myWidgets: const DefaultButtonText(text: "تاكيد"),
-            otpressFunction: () {},
+            otpressFunction: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  RoutNamesDart.rTripTicketScreen,
+                  arguments: tickets[0],
+                  (Route<dynamic> route) => true);
+            },
           ),
         )
       ],

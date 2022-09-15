@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:testapp/business_logic/provider/user_guest_provider.dart';
 import 'package:testapp/constants/constant_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
@@ -20,6 +22,7 @@ class ProfileScreen extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: MyThemeData.appblue,
     ));
+    user_guest isGuest = Provider.of<user_guest>(context, listen: false);
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyThemeData.backGroundColor,
@@ -58,7 +61,15 @@ class ProfileScreen extends StatelessWidget {
                   color: MyThemeData.appyellow,
                 ),
                 OptionsInProfile(
-                  ontap: () {},
+                  ontap: () {
+                    if (isGuest.isGuest == false) {
+                      Navigator.pushNamed(
+                          context, RoutNamesDart.rOldTicketsScreen);
+                    } else {
+                      Navigator.pushNamed(
+                          context, RoutNamesDart.rLoginFirstScreen);
+                    }
+                  },
                   paymentOptions: PaymentMethod.choosed,
                   text: 'التذاكر السابقة',
                   icons: const Icon(Icons.history),
@@ -69,42 +80,27 @@ class ProfileScreen extends StatelessWidget {
             const Divider(
               color: MyThemeData.dappDarkblue,
             ),
-            Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(3.w),
-                  child: const Icon(
-                    Icons.person,
-                    color: MyThemeData.dappDarkblue,
+            isGuest.isGuest == false
+                ? userData()
+                : Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                            margin: EdgeInsets.only(bottom: 4.h),
+                            child: Text('برجاء تسجيل الدخول اولا')),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5.w),
+                          child: CustomElevatedButton(
+                              buttonColor: MyThemeData.dappblue,
+                              myWidgets: DefaultButtonText(
+                                text: 'تسجيل الدخول',
+                              ),
+                              otpressFunction: () {}),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                Text('Ahmed')
-              ],
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(3.w),
-                  child: const Icon(
-                    Icons.phone_iphone,
-                    color: MyThemeData.dappDarkblue,
-                  ),
-                ),
-                Text('+20 1012457896')
-              ],
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(3.w),
-                  child: const Icon(
-                    Icons.email_outlined,
-                    color: MyThemeData.dappDarkblue,
-                  ),
-                ),
-                Text('AhmedMohamed@gmail.com')
-              ],
-            ),
             const Divider(
               color: MyThemeData.dappDarkblue,
             ),
@@ -133,6 +129,49 @@ class ProfileScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget userData() {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(3.w),
+              child: const Icon(
+                Icons.person,
+                color: MyThemeData.dappDarkblue,
+              ),
+            ),
+            Text('Ahmed')
+          ],
+        ),
+        Row(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(3.w),
+              child: const Icon(
+                Icons.phone_iphone,
+                color: MyThemeData.dappDarkblue,
+              ),
+            ),
+            Text('+20 1012457896')
+          ],
+        ),
+        Row(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(3.w),
+              child: const Icon(
+                Icons.email_outlined,
+                color: MyThemeData.dappDarkblue,
+              ),
+            ),
+            Text('AhmedMohamed@gmail.com')
+          ],
+        ),
+      ],
     );
   }
 }

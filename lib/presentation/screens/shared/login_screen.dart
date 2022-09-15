@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:testapp/business_logic/login_cubit/login_cubit.dart';
+import 'package:testapp/business_logic/provider/user_guest_provider.dart';
 import 'package:testapp/constants/app_strings.dart';
 import 'package:testapp/constants/const_validations.dart';
 import 'package:testapp/constants/constant_data.dart';
@@ -25,6 +27,7 @@ class LoginScreen extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: MyThemeData.backGroundColor,
     ));
+    user_guest isGuest = Provider.of<user_guest>(context, listen: false);
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyThemeData.backGroundColor,
@@ -86,6 +89,7 @@ class LoginScreen extends StatelessWidget {
                           password: passwordController.text,
                         )));
                          */
+                        isGuest.isGuest = false;
                         mycubit.loginUser(
                           UserModel(
                             phone: phoneNumberController.text,
@@ -99,6 +103,7 @@ class LoginScreen extends StatelessWidget {
                       myWidgets:
                           const DefaultButtonText(text: "تسجيل الدخول كزائر"),
                       otpressFunction: () {
+                        isGuest.isGuest = true;
                         mycubit.loginUser(
                           UserModel(
                             phone: phoneNumberController.text,
