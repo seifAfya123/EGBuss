@@ -67,6 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
             // const LeavingAndArrivingCard(isFrom: true),
             !isOneWayTrip
                 ? LeavingAndArrivingCard(
+                    governrateName: "fromGOVEC.text",
+                    stationName: "fromStationEC.text",
                     isFrom: false,
                     function: () {
                       debugPrint("timepicker");
