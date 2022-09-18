@@ -17,5 +17,6 @@ class AppStrings {
 // SVG
   static const String forgetPassword = "assets/Svgs/undraw_forgot_password.svg";
   static const String egbussSvg = "assets/Svgs/logo3.svg";
+  static const String busImg = "assets/images/busImg.png";
   static const String svgAnalysis = "";
 }

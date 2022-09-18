@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:testapp/constants/app_strings.dart';
 import 'package:testapp/constants/const_test_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
@@ -9,6 +10,7 @@ import 'package:testapp/presentation/widget/appbar_title_text.dart';
 import 'package:testapp/presentation/widget/const_widget.dart';
 import 'package:testapp/presentation/widget/custom_drop_down_list.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
+import 'package:testapp/presentation/widget/custom_image_container.dart';
 import 'package:testapp/presentation/widget/default_button_text.dart';
 import 'package:testapp/presentation/widget/drawer.dart';
 import 'package:testapp/presentation/widget/leaving_and_arriving_card.dart';
@@ -45,8 +47,9 @@ class _FindTripScreenState extends State<FindTripScreen> {
             withPadding: true,
             bodyChild: Column(
               children: [
-                Expanded(
-                  child: Container(),
+                const Expanded(
+                  child: CustomImageContainer(
+                      imagePath: AppStrings.busImg, withShadow: false),
                 ),
                 Container(
                   height: 9.h,
