@@ -9,15 +9,20 @@ class LeavingAndArrivingCard extends StatelessWidget {
     Key? key,
     required this.isFrom,
     required this.function,
+    required this.stationName,
+    required this.governrateName,
   }) : super(key: key);
   final bool isFrom;
   final Function function;
+  final String stationName;
+  final String governrateName;
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: InkWell(
         onTap: () => function(),
         child: Container(
+          height: governrateName.isEmpty ? 10.h : null,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(7.w),
@@ -36,7 +41,7 @@ class LeavingAndArrivingCard extends StatelessWidget {
                     color: MyThemeData.mywhite,
                   ),
                   Text(
-                    isFrom ? "from" : "To",
+                    isFrom ? "من" : "الي",
                     style: Theme.of(context)
                         .textTheme
                         .headline6!
@@ -44,8 +49,10 @@ class LeavingAndArrivingCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Text(isFrom ? "وقت المغادره" : "وقت الوصول"),
-              const DefaultButtonText(text: "الثلاثاء 14/5")
+              governrateName.isEmpty ? Container() : Text(governrateName),
+              stationName.isEmpty
+                  ? Container()
+                  : DefaultButtonText(text: stationName)
             ],
           ),
         ),

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:testapp/constants/const_test_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/presentation/widget/appbar_title_text.dart';
+import 'package:testapp/presentation/widget/const_widget.dart';
+import 'package:testapp/presentation/widget/custom_drop_down_list.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/default_button_text.dart';
 import 'package:testapp/presentation/widget/drawer.dart';
@@ -21,6 +24,11 @@ class FindTripScreen extends StatefulWidget {
 
 class _FindTripScreenState extends State<FindTripScreen> {
   bool isOneWayTrip = true;
+  final fromStationEC = TextEditingController();
+  final fromGOVEC = TextEditingController();
+  final toGOVEC = TextEditingController();
+  final toStationEC = TextEditingController();
+  final dateEC = TextEditingController();
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -61,14 +69,57 @@ class _FindTripScreenState extends State<FindTripScreen> {
                   children: [
                     LeavingAndArrivingCard(
                         isFrom: false,
+                        governrateName: toGOVEC.text,
+                        stationName: toStationEC.text,
                         function: () {
-                          debugPrint("bottomsheet");
+                          // debugPrint("bottomsheet");
+                          ConstWidgets.botomshet(
+                            context,
+                            ListView.builder(
+                              itemCount: stations.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  margin: EdgeInsets.symmetric(vertical: 1.h),
+                                  child: MyDropDownList(
+                                    onChangeFunction: () {
+                                      setState(() {});
+                                    },
+                                    governrateController: toGOVEC,
+                                    stationcontroller: toStationEC,
+                                    items: stations[index].stations,
+                                    title: stations[index].governrate,
+                                  ),
+                                );
+                              },
+                            ),
+                          );
                         }),
                     SizedBox(width: 3.w),
                     LeavingAndArrivingCard(
+                        governrateName: fromGOVEC.text,
+                        stationName: fromStationEC.text,
                         isFrom: true,
                         function: () {
-                          debugPrint("bottomsheet");
+                          ConstWidgets.botomshet(
+                            context,
+                            ListView.builder(
+                              itemCount: stations.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  margin: EdgeInsets.symmetric(vertical: 1.h),
+                                  child: MyDropDownList(
+                                    onChangeFunction: () {
+                                      setState(() {});
+                                    },
+                                    governrateController: fromGOVEC,
+                                    stationcontroller: fromStationEC,
+                                    items: stations[index].stations,
+                                    title: stations[index].governrate,
+                                  ),
+                                );
+                              },
+                            ),
+                          );
                         }),
                   ],
                 ),
@@ -91,7 +142,7 @@ class _FindTripScreenState extends State<FindTripScreen> {
                         context, RoutNamesDart.rSeatReservation);
                   },
                 ),
-                SizedBox(height: 6.h),
+                // SizedBox(height: 6.h),
               ],
             ),
           ),

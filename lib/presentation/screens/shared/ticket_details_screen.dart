@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:testapp/constants/app_strings.dart';
 import 'package:testapp/constants/constant_data.dart';
 
 import 'package:testapp/data/models/ticket.dart';
@@ -11,12 +12,42 @@ import 'package:testapp/presentation/view/body_white_container.dart';
 import 'package:testapp/presentation/widget/appbar_title_text.dart';
 import 'package:testapp/presentation/widget/custom_image_container.dart';
 
-class TicketDetailsScreen extends StatelessWidget {
+class TicketDetailsScreen extends StatefulWidget {
   const TicketDetailsScreen({
     Key? key,
     required this.ticket,
   }) : super(key: key);
   final Ticket ticket;
+
+  @override
+  State<TicketDetailsScreen> createState() => _TicketDetailsScreenState();
+}
+
+class _TicketDetailsScreenState extends State<TicketDetailsScreen> {
+  List<Widget> cuts = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      for (var i = 0; i < 12; i++) {
+        cuts.add(Container(
+          margin: EdgeInsets.symmetric(horizontal: 1.w),
+          width: 3.w,
+          height: 1,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            // color: MyThemeData.appblue,
+          ),
+          child: Divider(
+            thickness: 0.5.w,
+            color: MyThemeData.appblue,
+          ),
+        ));
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,6 +72,7 @@ class TicketDetailsScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Text(widget.ticket.ticketNumber!),
                 CustomImageContainer(
                   imagePath: ConstantData.qrCode,
                   withShadow: false,
@@ -60,7 +92,7 @@ class TicketDetailsScreen extends StatelessWidget {
     double raduis = 50.w;
 
     double curvesheight = 15.w;
-    double curvesWidth = 10.w;
+    double curvesWidth = 8.w;
     return Container(
       // color: Colors.red,
       height: curvesheight,
@@ -78,28 +110,7 @@ class TicketDetailsScreen extends StatelessWidget {
               color: MyThemeData.appblue,
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 7,
-              shrinkWrap: false,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  margin: EdgeInsets.symmetric(horizontal: 1.w),
-                  width: 6.w,
-                  height: 1,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    // color: MyThemeData.appblue,
-                  ),
-                  child: Divider(
-                    thickness: 1.w,
-                    color: MyThemeData.appblue,
-                  ),
-                );
-              },
-            ),
-          ),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: cuts),
           Container(
             height: curvesheight,
             width: curvesWidth,
@@ -118,20 +129,37 @@ class TicketDetailsScreen extends StatelessWidget {
   Widget ticketData() {
     return Expanded(
       child: Container(
-        color: Colors.red,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        padding: EdgeInsets.symmetric(horizontal: 5.w),
+        // color: Colors.red,
+        child: Row(
           children: [
-            Text(ticket.ticketNumber!),
-            Text(ticket.from!),
-            Text(ticket.text1!),
-            Text(ticket.to!),
-            Text(ticket.text2!),
-            Text(ticket.time!),
-            // Text(ticket.time!),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                titleText('من'),
+                Text(widget.ticket.from!),
+                titleText('الي'),
+                Text(widget.ticket.to!),
+                titleText(widget.ticket.text1!),
+                Text(widget.ticket.text2!),
+                Text(widget.ticket.time!),
+                // Text(ticket.time!),
+              ],
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget titleText(data) {
+    return Text(
+      data,
+      style: Theme.of(context)
+          .textTheme
+          .headline2!
+          .copyWith(fontWeight: FontWeight.bold),
     );
   }
 }
