@@ -35,7 +35,7 @@ class AvailableTripsScreen extends StatelessWidget {
                   ticket: tickets[index],
                   function: () {
                     Navigator.pushNamed(
-                        context, RoutNamesDart.rConfirmReservationScreen);
+                        context, RoutNamesDart.rSeatReservation);
                   },
                 );
               },

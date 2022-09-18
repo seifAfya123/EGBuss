@@ -25,6 +25,7 @@ class EditProfileScreen extends StatelessWidget {
       ),
       body: BodyWhiteContainer(
         bodyChild: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Column(
             children: [
               Container(

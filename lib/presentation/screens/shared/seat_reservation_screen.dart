@@ -71,7 +71,7 @@ class SeatReservation extends StatelessWidget {
                                 myWidgets: const DefaultButtonText(text: "حجز"),
                                 otpressFunction: () {
                                   Navigator.pushNamed(context,
-                                      RoutNamesDart.rAvailableTripsScreen);
+                                      RoutNamesDart.rConfirmReservationScreen);
                                 },
                               ),
                             )

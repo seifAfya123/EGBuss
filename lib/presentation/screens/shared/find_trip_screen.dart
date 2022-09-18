@@ -11,6 +11,7 @@ import 'package:testapp/presentation/widget/const_widget.dart';
 import 'package:testapp/presentation/widget/custom_drop_down_list.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
 import 'package:testapp/presentation/widget/custom_image_container.dart';
+import 'package:testapp/presentation/widget/date_picker_widget.dart';
 import 'package:testapp/presentation/widget/default_button_text.dart';
 import 'package:testapp/presentation/widget/drawer.dart';
 import 'package:testapp/presentation/widget/leaving_and_arriving_card.dart';
@@ -142,7 +143,7 @@ class _FindTripScreenState extends State<FindTripScreen> {
                   myWidgets: const DefaultButtonText(text: "بحث"),
                   otpressFunction: () {
                     Navigator.pushNamed(
-                        context, RoutNamesDart.rSeatReservation);
+                        context, RoutNamesDart.rAvailableTripsScreen);
                   },
                 ),
                 // SizedBox(height: 6.h),
@@ -157,9 +158,9 @@ class _FindTripScreenState extends State<FindTripScreen> {
   fisrtChild() {
     return Row(
       children: [
-        TripTimePicker(function: () {
-          debugPrint("timepicker");
-        }),
+        DatePickerWidget(
+          text: 'تاريخ المغادرة',
+        ),
       ],
     );
   }
@@ -169,13 +170,11 @@ class _FindTripScreenState extends State<FindTripScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        TripTimePicker(function: () {
-          debugPrint("timepicker");
-        }),
+        DatePickerWidget(text: 'تاريخ المغادرة'),
         SizedBox(width: 3.w),
-        TripTimePicker(function: () {
-          debugPrint("timepicker");
-        }),
+        DatePickerWidget(
+          text: 'تاريخ العودة',
+        )
       ],
     );
   }

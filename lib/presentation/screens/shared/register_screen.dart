@@ -47,6 +47,8 @@ class RegisterScreen extends StatelessWidget {
             return Container(
               margin: EdgeInsets.symmetric(horizontal: 5.w),
               child: SingleChildScrollView(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
