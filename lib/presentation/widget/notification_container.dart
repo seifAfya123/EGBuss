@@ -52,7 +52,7 @@ class NotificationContainer extends StatelessWidget {
             ),
             Spacer(),
 
-            Text("نتمني لكم رحله سغيده"),
+            Text("نتمني لكم رحله سعيده"),
           ],
         ),
       ),

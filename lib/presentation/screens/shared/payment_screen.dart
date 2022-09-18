@@ -25,10 +25,13 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CupertinoNavigationBar(
-        leading: CupertinoNavigationBarBackButton(color: Colors.white),
-        backgroundColor: MyThemeData.appblue,
-        middle: AppbarTitleText(titleText: 'طرق الدفع'),
+      appBar: AppBar(
+        leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Icon(CupertinoIcons.back)),
+        title: const AppbarTitleText(titleText: 'طرق الدفع'),
       ),
       body: Center(
           child: BodyWhiteContainer(

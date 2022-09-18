@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
@@ -14,7 +15,13 @@ class ConfirmReservationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: const AppbarTitleText(titleText: "اختر مقعدك")),
+        appBar: AppBar(
+            leading: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(CupertinoIcons.back)),
+            title: const AppbarTitleText(titleText: "اختر مقعدك")),
         body: BodyWhiteContainer(
           withPadding: true,
           bodyChild: SingleChildScrollView(

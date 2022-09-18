@@ -17,6 +17,7 @@ class OldTicketsScreen extends StatelessWidget {
             leading: CupertinoNavigationBarBackButton(color: Colors.white),
             backgroundColor: MyThemeData.appblue,
             middle: AppbarTitleText(titleText: 'تذاكر قديمة'),
+            border: Border(bottom: BorderSide(style: BorderStyle.none)),
           ),
           body: BodyWhiteContainer(
             withPadding: true,

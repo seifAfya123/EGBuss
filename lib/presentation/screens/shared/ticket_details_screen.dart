@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/constants/constant_data.dart';
@@ -22,6 +23,11 @@ class TicketDetailsScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const AppbarTitleText(titleText: 'تذاكر'),
+          leading: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(CupertinoIcons.back)),
         ),
         body: Center(
           child: Container(

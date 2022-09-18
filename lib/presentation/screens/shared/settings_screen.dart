@@ -18,6 +18,7 @@ class SettingScreen extends StatelessWidget {
         leading: CupertinoNavigationBarBackButton(color: Colors.white),
         backgroundColor: MyThemeData.appblue,
         middle: AppbarTitleText(titleText: "الاعدادات"),
+        border: Border(bottom: BorderSide(style: BorderStyle.none)),
       ),
       body: BodyWhiteContainer(
         withPadding: true,

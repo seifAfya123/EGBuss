@@ -19,6 +19,7 @@ class ContactUs extends StatelessWidget {
         appBar: const CupertinoNavigationBar(
           leading: CupertinoNavigationBarBackButton(color: Colors.white),
           backgroundColor: MyThemeData.appblue,
+          border: Border(bottom: BorderSide(style: BorderStyle.none)),
           middle: AppbarTitleText(titleText: "تواصل معنا"),
         ),
         body: Center(

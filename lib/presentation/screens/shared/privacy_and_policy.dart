@@ -20,6 +20,7 @@ class PrivacyAndPolicy extends StatelessWidget {
           leading: CupertinoNavigationBarBackButton(color: Colors.white),
           backgroundColor: MyThemeData.appblue,
           middle: AppbarTitleText(titleText: "الامان و الخصوصيه"),
+          border: Border(bottom: BorderSide(style: BorderStyle.none)),
         ),
         body: Center(
           child: BodyWhiteContainer(

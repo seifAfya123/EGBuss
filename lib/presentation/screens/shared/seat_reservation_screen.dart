@@ -21,82 +21,88 @@ class SeatReservation extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: const CupertinoNavigationBar(
-          leading: CupertinoNavigationBarBackButton(color: Colors.white),
-          backgroundColor: MyThemeData.appblue,
-          middle: AppbarTitleText(titleText: "اختر مقعدك"),
+        appBar: AppBar(
+          leading: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(CupertinoIcons.back)),
+          title: AppbarTitleText(titleText: "اختر مقعدك"),
         ),
         body: BodyWhiteContainer(
           withPadding: true,
-          bodyChild: BlocProvider(
-            create: (context) => SeatReserverCubit()..getSeatsFromApi(),
-            child: BlocConsumer<SeatReserverCubit, SeatReserverState>(
-              listener: (context, state) {
-                if (state is MoreSeatsState) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      ErrorSnackBar(errorText: MoreSeatsState.errorText));
-                }
-              },
-              builder: (context, state) {
-                SeatReserverCubit mycubit =
-                    BlocProvider.of<SeatReserverCubit>(context);
-                return Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 3.w),
-                      height: 10.h,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("المقاعد",
-                                  style: Theme.of(context).textTheme.bodyText1),
-                              mycubit.choosenSeats.isEmpty
-                                  ? const Text("اختر مقعدك")
-                                  : choosenSeats(mycubit.choosenSeats)
-                            ],
-                          ),
-                          SizedBox(
-                            width: 38.w,
-                            height: 9.h,
-                            child: CustomElevatedButton(
-                              myWidgets: const DefaultButtonText(text: "حجز"),
-                              otpressFunction: () {
-                                Navigator.pushNamed(context,
-                                    RoutNamesDart.rConfirmReservationScreen);
-                              },
+          bodyChild: Center(
+            child: BlocProvider(
+              create: (context) => SeatReserverCubit()..getSeatsFromApi(),
+              child: BlocConsumer<SeatReserverCubit, SeatReserverState>(
+                listener: (context, state) {
+                  if (state is MoreSeatsState) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        ErrorSnackBar(errorText: MoreSeatsState.errorText));
+                  }
+                },
+                builder: (context, state) {
+                  SeatReserverCubit mycubit =
+                      BlocProvider.of<SeatReserverCubit>(context);
+                  return Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 3.w),
+                        height: 10.h,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("المقاعد",
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1),
+                                mycubit.choosenSeats.isEmpty
+                                    ? const Text("اختر مقعدك")
+                                    : choosenSeats(mycubit.choosenSeats)
+                              ],
                             ),
-                          )
-                        ],
+                            SizedBox(
+                              width: 38.w,
+                              height: 9.h,
+                              child: CustomElevatedButton(
+                                myWidgets: const DefaultButtonText(text: "حجز"),
+                                otpressFunction: () {
+                                  Navigator.pushNamed(context,
+                                      RoutNamesDart.rAvailableTripsScreen);
+                                },
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    seatsList(mycubit),
-                    SizedBox(
-                      height: 7.h,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          guide(
-                              circleColor: MyThemeData.appyellow,
-                              titleText: "تم اختياره",
-                              context: context),
-                          guide(
-                              circleColor: Colors.grey,
-                              titleText: "متاح",
-                              context: context),
-                          guide(
-                              circleColor: MyThemeData.appDarkblue,
-                              titleText: "غير متاح",
-                              context: context),
-                        ],
+                      seatsList(mycubit),
+                      SizedBox(
+                        height: 7.h,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            guide(
+                                circleColor: MyThemeData.appyellow,
+                                titleText: "تم اختياره",
+                                context: context),
+                            guide(
+                                circleColor: Colors.grey,
+                                titleText: "متاح",
+                                context: context),
+                            guide(
+                                circleColor: MyThemeData.appDarkblue,
+                                titleText: "غير متاح",
+                                context: context),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              },
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         ),

@@ -20,6 +20,7 @@ class AboutUs extends StatelessWidget {
           leading: CupertinoNavigationBarBackButton(color: Colors.white),
           backgroundColor: MyThemeData.appblue,
           middle: AppbarTitleText(titleText: "من نحن"),
+          border: Border(bottom: BorderSide(style: BorderStyle.none)),
         ),
         body: Center(
           child: BodyWhiteContainer(

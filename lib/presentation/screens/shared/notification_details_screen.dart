@@ -27,6 +27,7 @@ class NotificationDetailsScreen extends StatelessWidget {
           leading: CupertinoNavigationBarBackButton(color: Colors.white),
           backgroundColor: MyThemeData.appblue,
           middle: AppbarTitleText(titleText: "الاشعارات"),
+          border: Border(bottom: BorderSide(style: BorderStyle.none)),
         ),
         body: BodyWhiteContainer(
           withPadding: true,
@@ -49,7 +50,7 @@ class NotificationDetailsScreen extends StatelessWidget {
                 ),
                 Spacer(),
 
-                Text("نتمني لكم رحله سغيده"),
+                Text("نتمني لكم رحله سعيده"),
               ],
             ),
           ),
