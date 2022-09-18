@@ -22,6 +22,7 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 10.h,
       child: ElevatedButton(
         onPressed: otpressFunction,
         style: ElevatedButton.styleFrom(

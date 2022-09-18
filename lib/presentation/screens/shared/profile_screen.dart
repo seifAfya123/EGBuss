@@ -32,7 +32,12 @@ class ProfileScreen extends StatelessWidget {
           actions: [
             InkWell(
               onTap: (() {
-                Navigator.pushNamed(context, RoutNamesDart.rEditProfileScreen);
+                if (isGuest.isGuest == false) {
+                  Navigator.pushNamed(
+                      context, RoutNamesDart.rEditProfileScreen);
+                } else {
+                  Navigator.pushNamed(context, RoutNamesDart.rLoginFirstScreen);
+                }
               }),
               child: Padding(
                 padding: EdgeInsets.all(5.w),
@@ -54,7 +59,9 @@ class ProfileScreen extends StatelessWidget {
                   color: MyThemeData.appyellow,
                 ),
                 OptionsInProfile(
-                  ontap: () {},
+                  ontap: () {
+                    Navigator.pushNamed(context, RoutNamesDart.rSettingsScreen);
+                  },
                   paymentOptions: PaymentMethod.choosed,
                   text: 'الأعدادات',
                   icons: const Icon(Icons.settings),

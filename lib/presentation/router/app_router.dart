@@ -23,6 +23,7 @@ import 'package:testapp/presentation/screens/shared/register_screen.dart';
 import 'package:testapp/presentation/screens/shared/seat_reservation_screen.dart';
 import 'package:testapp/presentation/screens/shared/find_trip_screen.dart';
 import 'package:testapp/presentation/screens/shared/select_trip_screen.dart';
+import 'package:testapp/presentation/screens/shared/settings_screen.dart';
 import 'package:testapp/presentation/screens/shared/splash_screen.dart';
 import 'package:testapp/presentation/screens/shared/ticket_details_screen.dart';
 import 'package:testapp/presentation/screens/shared/tickets_screen.dart';
@@ -34,6 +35,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => SplashScreen());
       case RoutNamesDart.rLoginScreen:
         return MaterialPageRoute(builder: (_) => LoginScreen());
+      case RoutNamesDart.rSettingsScreen:
+        return MaterialPageRoute(builder: (_) => SettingScreen());
       // case RoutNamesDart.rHomeScreen:
       //   return MaterialPageRoute(builder: (_) => HomeScreen());
       case RoutNamesDart.rRegisterScreen:
