@@ -27,7 +27,7 @@ String cash = "";
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    // statusBarColor: MyThemeData.appblue,
+    statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
   ));
 
