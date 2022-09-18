@@ -51,6 +51,7 @@ class MyDrawer extends StatelessWidget {
                     Navigator.pushReplacementNamed(
                         context, RoutNamesDart.rNotificationsScreen);
                   } else {
+                    Navigator.pop(context);
                     Navigator.pushNamed(
                         context, RoutNamesDart.rLoginFirstScreen);
                   }
@@ -65,6 +66,7 @@ class MyDrawer extends StatelessWidget {
                   Navigator.pushReplacementNamed(
                       context, RoutNamesDart.rMyTicketsScreen);
                 } else {
+                  Navigator.pop(context);
                   Navigator.pushNamed(context, RoutNamesDart.rLoginFirstScreen);
                 }
               },

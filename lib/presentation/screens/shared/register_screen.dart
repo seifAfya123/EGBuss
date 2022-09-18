@@ -116,7 +116,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: 3.h),
                     CustomElevatedButton(
                       buttonColor: MyThemeData.appblue,
-                      myWidgets: const DefaultButtonText(text: "انشاء حساب"),
+                      myWidgets: Text("انشاء حساب"),
                       otpressFunction: () {
                         mycubit.registerUser(
                           UserModel(
@@ -130,11 +130,25 @@ class RegisterScreen extends StatelessWidget {
                       },
                     ),
                     TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, RoutNamesDart.rLoginScreen);
-                        },
-                        child: Text("لديك حساب بالفعل"))
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                            context, RoutNamesDart.rLoginScreen);
+                      },
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text(
+                              'لديك حساب بالفعل؟ ',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'تسجيل دخول',
+                              style: TextStyle(
+                                  color: MyThemeData.appyellow,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ]),
+                    )
                   ],
                 ),
               ),

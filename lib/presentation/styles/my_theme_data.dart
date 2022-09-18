@@ -47,7 +47,6 @@ class MyThemeData {
     //   primaryColor: appblue, // HERE COLOR OF LEADING
     // ),
     appBarTheme: const AppBarTheme(
-      
       backgroundColor: appblue,
       elevation: 0,
       centerTitle: true,

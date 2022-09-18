@@ -79,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: 2.5.h),
                     CustomElevatedButton(
                       buttonColor: MyThemeData.appblue,
-                      myWidgets: const DefaultButtonText(text: "تسجيل الدخول"),
+                      myWidgets: Text("تسجيل الدخول"),
                       otpressFunction: () {
                         /**
                          ScaffoldMessenger.of(context)
@@ -100,8 +100,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 2.h),
                     CustomElevatedButton(
-                      myWidgets:
-                          const DefaultButtonText(text: "تسجيل الدخول كزائر"),
+                      myWidgets: const Text("تسجيل الدخول كزائر"),
                       otpressFunction: () {
                         isGuest.isGuest = true;
                         mycubit.loginUser(
@@ -112,12 +111,27 @@ class LoginScreen extends StatelessWidget {
                         );
                       },
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(
-                            context, RoutNamesDart.rRegisterScreen);
-                      },
-                      child: Text("انشاء حساب جديد"),
+                    Container(
+                      margin: EdgeInsets.only(top: 6.h),
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                                context, RoutNamesDart.rRegisterScreen);
+                          },
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  'ليس لديك حساب؟',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'انشاء حساب جديد',
+                                  style: TextStyle(
+                                      color: MyThemeData.appyellow,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ])),
                     )
                   ],
                 ),
