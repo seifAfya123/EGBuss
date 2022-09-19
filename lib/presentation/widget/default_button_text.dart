@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class DefaultButtonText extends StatelessWidget {
   final String text;
-  final TextStyle? newStyle;
+  final TextStyle? newstyle;
+  final Color? newColor;
   const DefaultButtonText({
     Key? key,
     required this.text,
-    this.newStyle,
+    this.newColor,
+    this.newstyle,
   }) : super(key: key);
 
   @override
@@ -16,7 +18,8 @@ class DefaultButtonText extends StatelessWidget {
       children: [
         Text(
           text,
-          style: newStyle ?? Theme.of(context).textTheme.headline6,
+          style: newstyle ??
+              Theme.of(context).textTheme.headline6!.copyWith(color: newColor),
         ),
       ],
     );

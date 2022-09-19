@@ -1,10 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/business_logic/register_cubit/register_cubit.dart';
-import 'package:testapp/constants/app_strings.dart';
 import 'package:testapp/constants/end_points.dart';
 
 import 'dart:ui' as ui;
@@ -24,41 +22,32 @@ class OtpScreen extends StatelessWidget {
     required this.owner,
   }) : super(key: key);
   TextEditingController c1 = TextEditingController();
-
   TextEditingController c2 = TextEditingController();
-
   TextEditingController c3 = TextEditingController();
-
   TextEditingController c4 = TextEditingController();
-
   var myfromKey = GlobalKey<FormState>();
-
   String lang =
       CacheHelper.getDataFromSharedPreference(key: appLanguageSharedKey);
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyThemeData.backGroundColor,
         body: Container(
-          padding: EdgeInsets.all(3.w),
+          padding: EdgeInsets.all(5.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // DefaultAppBar(titleText: ""),
-              // DefaultAppBar(titleText: AppStrings.sOtpScreen.tr()),
               SizedBox(height: 3.h),
               // title
               Text(
-                "verify",
+                "تاكيد الكود",
                 style: Theme.of(context).textTheme.headline1!,
               ),
               SizedBox(height: 2.h),
               // message
               Text(
-                "cancel",
+                "تم ارسال رقم اليك من فضلك ادخله لتاكيد انه انت",
                 style: Theme.of(context).textTheme.bodyText2!.copyWith(
                     color: Theme.of(context)
                         .textTheme
@@ -120,7 +109,7 @@ class OtpScreen extends StatelessWidget {
                               width: 40.w,
                               child: CustomElevatedButton(
                                 myWidgets:
-                                    const DefaultButtonText(text: "Verify"),
+                                    const DefaultButtonText(text: "تاكيد"),
                                 otpressFunction: () {
                                   verify(mycubit, owner.phone!);
                                   Navigator.pushReplacementNamed(
@@ -133,19 +122,25 @@ class OtpScreen extends StatelessWidget {
                               child: CustomElevatedButton(
                                 buttonColor: Colors.white,
                                 myWidgets: DefaultButtonText(
-                                  text: "Cancel",
-                                  newStyle:
-                                      Theme.of(context).textTheme.bodyText1,
-                                ),
-                                otpressFunction: () {
-                                  Navigator.pop(context);
-                                },
+                                    text: "الغاء",
+                                    newstyle:
+                                        Theme.of(context).textTheme.bodyText1),
+                                otpressFunction: () => Navigator.pop(context),
                               ),
                             )
                           ],
                         ),
+                        SizedBox(height: 3.h),
                         TextButton(
-                            onPressed: () {}, child: Text("اعاده الارسال"))
+                          onPressed: () {},
+                          child: DefaultButtonText(
+                            text: "اعاده الارسال",
+                            newstyle: Theme.of(context)
+                                .textTheme
+                                .headline1!
+                                .copyWith(color: MyThemeData.appblue),
+                          ),
+                        )
                       ],
                     );
                   },
@@ -168,7 +163,6 @@ class OtpScreen extends StatelessWidget {
     } else {
       otpCode = c1.text + c2.text + c3.text + c4.text;
     }
-    print(otpCode);
     if (otpCode.length == 4) {
       mycubit.verifyOtpCode(otpCode, phoneNumber);
     } else {}

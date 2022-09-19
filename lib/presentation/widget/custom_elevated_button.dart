@@ -22,7 +22,7 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 10.h,
+      height: 8.h,
       child: ElevatedButton(
         onPressed: otpressFunction,
         style: ElevatedButton.styleFrom(
@@ -34,7 +34,12 @@ class CustomElevatedButton extends StatelessWidget {
             width: 0.8.w,
           ),
         ),
-        child: myWidgets,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            myWidgets,
+          ],
+        ),
       ),
     );
   }

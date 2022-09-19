@@ -14,14 +14,25 @@ import 'package:testapp/presentation/widget/error_snack_bar.dart';
 
 import 'package:testapp/presentation/widget/loading_data_widget.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key? key}) : super(key: key);
 
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController nameController = TextEditingController();
+
   TextEditingController phoneNumberController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
+
   TextEditingController cpasswordController = TextEditingController();
+
   TextEditingController emailController = TextEditingController();
+
+  bool? gender;
 
   @override
   Widget build(BuildContext context) {
@@ -69,18 +80,37 @@ class RegisterScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
+                        SizedBox(
                           width: 40.w,
                           child: CustomElevatedButton(
-                              buttonColor: MyThemeData.appGery,
-                              myWidgets: Text("Male"),
-                              otpressFunction: () {}),
+                              buttonColor: gender == true
+                                  ? MyThemeData.appyellow
+                                  : MyThemeData.appGery,
+                              myWidgets: const DefaultButtonText(
+                                text: "ذكر",
+                                newColor: MyThemeData.appDarkblue,
+                              ),
+                              otpressFunction: () {
+                                setState(() {
+                                  gender = true;
+                                });
+                              }),
                         ),
-                        Container(
+                        SizedBox(
                           width: 40.w,
                           child: CustomElevatedButton(
-                              myWidgets: Text("female"),
-                              otpressFunction: () {}),
+                              buttonColor: gender == false
+                                  ? MyThemeData.appyellow
+                                  : MyThemeData.appGery,
+                              myWidgets: const DefaultButtonText(
+                                text: "انثي",
+                                newColor: MyThemeData.appDarkblue,
+                              ),
+                              otpressFunction: () {
+                                setState(() {
+                                  gender = false;
+                                });
+                              }),
                         ),
                       ],
                     ),
@@ -118,7 +148,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: 3.h),
                     CustomElevatedButton(
                       buttonColor: MyThemeData.appblue,
-                      myWidgets: Text("انشاء حساب"),
+                      myWidgets: const DefaultButtonText(text: "انشاء حساب"),
                       otpressFunction: () {
                         mycubit.registerUser(
                           UserModel(

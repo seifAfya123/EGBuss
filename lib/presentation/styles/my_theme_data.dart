@@ -33,9 +33,9 @@ class MyThemeData {
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.all(5.w),
         maximumSize: Size(96.w, 9.h),
-        minimumSize: Size(60.w, 8.h),
+        minimumSize: Size(96.w, 8.h),
         alignment: Alignment.center,
-        primary: appyellow,
+        backgroundColor: appyellow,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5.w),
           // side: BorderSide(color: Colors.red),

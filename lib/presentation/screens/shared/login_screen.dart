@@ -54,7 +54,10 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: 4.h),
                     Text(
                       "تسجيل الدخول",
-                      style: Theme.of(context).textTheme.headline1,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline1!
+                          .copyWith(color: MyThemeData.appblue),
                     ),
                     SizedBox(height: 4.h),
                     // SvgIconViwer(iconPath: AppStrings.egbussSvg),
@@ -81,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: 2.5.h),
                     CustomElevatedButton(
                       buttonColor: MyThemeData.appblue,
-                      myWidgets: Text("تسجيل الدخول"),
+                      myWidgets: const DefaultButtonText(text: "تسجيل الدخول"),
                       otpressFunction: () {
                         /**
                          ScaffoldMessenger.of(context)
@@ -102,7 +105,8 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 2.h),
                     CustomElevatedButton(
-                      myWidgets: const Text("تسجيل الدخول كزائر"),
+                      myWidgets:
+                          const DefaultButtonText(text: "تسجيل الدخول كزائر"),
                       otpressFunction: () {
                         isGuest.isGuest = true;
                         mycubit.loginUser(

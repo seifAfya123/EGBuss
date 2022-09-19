@@ -15,7 +15,7 @@ class GlobalCubit extends Cubit<GlobalState> {
 
   ////////////////////////navigator
   Future navigate({VoidCallback? afterSuccess}) async {
-    await Future.delayed(const Duration(milliseconds: 1500), () {});
+    await Future.delayed(const Duration(milliseconds: 2000), () {});
     afterSuccess!();
   }
 
