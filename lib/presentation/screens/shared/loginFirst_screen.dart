@@ -18,6 +18,7 @@ class LoginFirstScreen extends StatelessWidget {
         appBar: const CupertinoNavigationBar(
           leading: CupertinoNavigationBarBackButton(color: Colors.white),
           backgroundColor: MyThemeData.appblue,
+          border: Border(bottom: BorderSide(style: BorderStyle.none)),
         ),
         body: BodyWhiteContainer(
           withPadding: true,
