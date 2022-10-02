@@ -8,12 +8,14 @@ import 'package:testapp/presentation/screens/shared/available_trips_screen.dart'
 import 'package:testapp/presentation/screens/shared/confirm_reservation_screen.dart';
 import 'package:testapp/presentation/screens/shared/contact_us.dart';
 import 'package:testapp/presentation/screens/shared/edit_profile_screen.dart';
+import 'package:testapp/presentation/screens/shared/loginFirst_screen.dart';
 import 'package:testapp/presentation/screens/shared/login_screen.dart';
 
 import 'package:testapp/presentation/screens/shared/notification_details_screen.dart';
 import 'package:testapp/presentation/screens/shared/notifications.dart';
 import 'package:testapp/presentation/screens/shared/old_tickets_screen.dart';
 import 'package:testapp/presentation/screens/shared/otp_screen.dart';
+import 'package:testapp/presentation/screens/shared/payment_screen.dart';
 import 'package:testapp/presentation/screens/shared/privacy_and_policy.dart';
 
 import 'package:testapp/presentation/screens/shared/profile_screen.dart';
@@ -21,6 +23,7 @@ import 'package:testapp/presentation/screens/shared/register_screen.dart';
 import 'package:testapp/presentation/screens/shared/seat_reservation_screen.dart';
 import 'package:testapp/presentation/screens/shared/find_trip_screen.dart';
 import 'package:testapp/presentation/screens/shared/select_trip_screen.dart';
+import 'package:testapp/presentation/screens/shared/settings_screen.dart';
 import 'package:testapp/presentation/screens/shared/splash_screen.dart';
 import 'package:testapp/presentation/screens/shared/ticket_details_screen.dart';
 import 'package:testapp/presentation/screens/shared/tickets_screen.dart';
@@ -32,6 +35,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => SplashScreen());
       case RoutNamesDart.rLoginScreen:
         return MaterialPageRoute(builder: (_) => LoginScreen());
+      case RoutNamesDart.rSettingsScreen:
+        return MaterialPageRoute(builder: (_) => SettingScreen());
       // case RoutNamesDart.rHomeScreen:
       //   return MaterialPageRoute(builder: (_) => HomeScreen());
       case RoutNamesDart.rRegisterScreen:
@@ -58,6 +63,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => SelectTripScreen());
       case RoutNamesDart.rConfirmReservationScreen:
         return MaterialPageRoute(builder: (_) => ConfirmReservationScreen());
+      case RoutNamesDart.rPaymentMethodScreen:
+        return MaterialPageRoute(builder: (_) => PaymentMethodScreen());
       case RoutNamesDart.rTripTicketScreen:
         Ticket args = settings.arguments as Ticket;
         return MaterialPageRoute(
@@ -75,6 +82,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => OldTicketsScreen());
       case RoutNamesDart.rMyTicketsScreen:
         return MaterialPageRoute(builder: (_) => TicketsScreen());
+      case RoutNamesDart.rLoginFirstScreen:
+        return MaterialPageRoute(builder: (_) => LoginFirstScreen());
       case RoutNamesDart.rOTPScreen:
         OwnerRegisterRequest owner = OwnerRegisterRequest(phone: "01012720084");
         return MaterialPageRoute(

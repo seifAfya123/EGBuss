@@ -3,7 +3,7 @@ import 'package:sizer/sizer.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 
 class CustomeTextFeild extends StatelessWidget {
-  const CustomeTextFeild({
+  CustomeTextFeild({
     Key? key,
     required this.textController,
     required this.feildText,
@@ -11,6 +11,8 @@ class CustomeTextFeild extends StatelessWidget {
     required this.userInputType,
     this.leading,
     this.action,
+    this.height,
+    this.width,
   }) : super(key: key);
   final TextEditingController textController;
   final String feildText;
@@ -18,10 +20,13 @@ class CustomeTextFeild extends StatelessWidget {
   final Widget? action;
   final bool withShadow;
   final TextInputType userInputType;
+  double? width;
+  double? height;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 7.h,
+      height: height ?? 7.h,
+      width: width ?? 100.w,
       alignment: Alignment.center,
       // margin: EdgeInsets.symmetric(horizontal: 3.w),
       decoration: withShadow

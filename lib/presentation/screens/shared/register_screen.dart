@@ -14,14 +14,25 @@ import 'package:testapp/presentation/widget/error_snack_bar.dart';
 
 import 'package:testapp/presentation/widget/loading_data_widget.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key? key}) : super(key: key);
 
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController nameController = TextEditingController();
+
   TextEditingController phoneNumberController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
+
   TextEditingController cpasswordController = TextEditingController();
+
   TextEditingController emailController = TextEditingController();
+
+  bool? gender;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +58,8 @@ class RegisterScreen extends StatelessWidget {
             return Container(
               margin: EdgeInsets.symmetric(horizontal: 5.w),
               child: SingleChildScrollView(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
@@ -67,18 +80,37 @@ class RegisterScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
+                        SizedBox(
                           width: 40.w,
                           child: CustomElevatedButton(
-                              buttonColor: MyThemeData.appGery,
-                              myWidgets: Text("Male"),
-                              otpressFunction: () {}),
+                              buttonColor: gender == true
+                                  ? MyThemeData.appyellow
+                                  : MyThemeData.appGery,
+                              myWidgets: const DefaultButtonText(
+                                text: "ذكر",
+                                newColor: MyThemeData.appDarkblue,
+                              ),
+                              otpressFunction: () {
+                                setState(() {
+                                  gender = true;
+                                });
+                              }),
                         ),
-                        Container(
+                        SizedBox(
                           width: 40.w,
                           child: CustomElevatedButton(
-                              myWidgets: Text("female"),
-                              otpressFunction: () {}),
+                              buttonColor: gender == false
+                                  ? MyThemeData.appyellow
+                                  : MyThemeData.appGery,
+                              myWidgets: const DefaultButtonText(
+                                text: "انثي",
+                                newColor: MyThemeData.appDarkblue,
+                              ),
+                              otpressFunction: () {
+                                setState(() {
+                                  gender = false;
+                                });
+                              }),
                         ),
                       ],
                     ),
@@ -94,7 +126,7 @@ class RegisterScreen extends StatelessWidget {
                       textController: passwordController,
                       feildText: "كلمه السر",
                       withShadow: true,
-                      userInputType: TextInputType.number,
+                      userInputType: TextInputType.text,
                       action: const Icon(Icons.password_rounded),
                     ),
                     SizedBox(height: 3.h),
@@ -102,7 +134,7 @@ class RegisterScreen extends StatelessWidget {
                       textController: passwordController,
                       feildText: "تاكيد كلمه السر",
                       withShadow: true,
-                      userInputType: TextInputType.number,
+                      userInputType: TextInputType.text,
                       action: const Icon(Icons.password_rounded),
                     ),
                     SizedBox(height: 3.h),
@@ -130,11 +162,25 @@ class RegisterScreen extends StatelessWidget {
                       },
                     ),
                     TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, RoutNamesDart.rLoginScreen);
-                        },
-                        child: Text("لديك حساب بالفعل"))
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                            context, RoutNamesDart.rLoginScreen);
+                      },
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text(
+                              'لديك حساب بالفعل؟ ',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'تسجيل دخول',
+                              style: TextStyle(
+                                  color: MyThemeData.appyellow,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ]),
+                    )
                   ],
                 ),
               ),

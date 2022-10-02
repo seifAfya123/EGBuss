@@ -1,4 +1,5 @@
 import 'package:testapp/constants/constant_data.dart';
+import 'package:testapp/data/models/locations.dart';
 import 'package:testapp/data/models/mesasge.dart';
 import 'package:testapp/data/models/ticket.dart';
 
@@ -111,4 +112,47 @@ List<List<SeatStatus>> seatsStatusFakeData = [
     SeatStatus.available,
     SeatStatus.available,
   ],
+];
+
+List<Locations> stations = [
+  Locations(
+    governrate: "القاهره",
+    stations: [
+      'محطه 1',
+      'محطه 2',
+      'محطه 3',
+      'محطه 4',
+      'محطه 5',
+    ],
+  ),
+  Locations(
+    governrate: "اسكندريه",
+    stations: [
+      'محطه 1',
+      'محطه 2',
+      'محطه 3',
+      'محطه 4',
+      'محطه 5',
+    ],
+  ),
+  Locations(
+    governrate: "مطروح",
+    stations: [
+      'محطه 1',
+      'محطه 2',
+      'محطه 3',
+      'محطه 4',
+      'محطه 5',
+    ],
+  ),
+  Locations(
+    governrate: "راس البر",
+    stations: [
+      'محطه 1',
+      'محطه 2',
+      'محطه 3',
+      'محطه 4',
+      'محطه 5',
+    ],
+  ),
 ];

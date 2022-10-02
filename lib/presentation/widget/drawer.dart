@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:testapp/business_logic/provider/user_guest_provider.dart';
 import 'package:testapp/constants/constant_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
@@ -10,6 +12,7 @@ class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    user_guest isGuest = Provider.of<user_guest>(context, listen: false);
     return Drawer(
         backgroundColor: MyThemeData.backGroundColor,
         child: Column(
@@ -43,18 +46,29 @@ class MyDrawer extends StatelessWidget {
             DrawerItem(
                 text: 'الأشعارات',
                 function: () {
-                  Navigator.pop(context);
-                  Navigator.pushReplacementNamed(
-                      context, RoutNamesDart.rNotificationsScreen);
+                  if (isGuest.isGuest == false) {
+                    Navigator.pop(context);
+                    Navigator.pushReplacementNamed(
+                        context, RoutNamesDart.rNotificationsScreen);
+                  } else {
+                    Navigator.pop(context);
+                    Navigator.pushNamed(
+                        context, RoutNamesDart.rLoginFirstScreen);
+                  }
                 },
                 icons: const Icon(Icons.notifications_none),
                 color: MyThemeData.dappblue),
             DrawerItem(
               text: 'تذاكرك',
               function: () {
-                Navigator.pop(context);
-                Navigator.pushReplacementNamed(
-                    context, RoutNamesDart.rMyTicketsScreen);
+                if (isGuest.isGuest == false) {
+                  Navigator.pop(context);
+                  Navigator.pushReplacementNamed(
+                      context, RoutNamesDart.rMyTicketsScreen);
+                } else {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, RoutNamesDart.rLoginFirstScreen);
+                }
               },
               icons: const Icon(CupertinoIcons.tickets,
                   color: MyThemeData.dappblue),

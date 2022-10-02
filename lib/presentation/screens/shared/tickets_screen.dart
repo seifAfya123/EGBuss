@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/constants/const_test_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';

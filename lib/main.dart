@@ -2,9 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:testapp/business_logic/bloc_observer.dart';
 import 'package:testapp/business_logic/global_cubit/global_cubit.dart';
 import 'package:testapp/business_logic/login_cubit/login_cubit.dart';
+import 'package:testapp/business_logic/payment_cubit/payment_cubit.dart';
+import 'package:testapp/business_logic/provider/user_guest_provider.dart';
 import 'package:testapp/business_logic/register_cubit/register_cubit.dart';
 import 'package:testapp/business_logic/seat_reserver_cubit/seat_reserver_cubit.dart';
 import 'package:testapp/constants/app_strings.dart';
@@ -24,7 +27,7 @@ String cash = "";
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    // statusBarColor: MyThemeData.appblue,
+    statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.dark,
   ));
 
@@ -68,12 +71,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiProvider(
       providers: [
         BlocProvider(create: ((context) => GlobalCubit())),
         BlocProvider(create: ((context) => LoginCubit())),
         BlocProvider(create: ((context) => RegisterCubit())),
         BlocProvider(create: ((context) => SeatReserverCubit())),
+        BlocProvider(create: ((context) => PaymentMethodCubit())),
+        ChangeNotifierProvider(create: (_) => user_guest()),
       ],
       child: BlocConsumer<GlobalCubit, GlobalState>(
         listener: (context, state) {},

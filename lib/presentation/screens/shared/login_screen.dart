@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:testapp/business_logic/login_cubit/login_cubit.dart';
+import 'package:testapp/business_logic/provider/user_guest_provider.dart';
 import 'package:testapp/constants/app_strings.dart';
 import 'package:testapp/constants/const_validations.dart';
 import 'package:testapp/constants/constant_data.dart';
@@ -25,6 +27,7 @@ class LoginScreen extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: MyThemeData.backGroundColor,
     ));
+    user_guest isGuest = Provider.of<user_guest>(context, listen: false);
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyThemeData.backGroundColor,
@@ -43,13 +46,18 @@ class LoginScreen extends StatelessWidget {
             return Container(
               margin: EdgeInsets.symmetric(horizontal: 3.w),
               child: SingleChildScrollView(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
                     SizedBox(height: 4.h),
                     Text(
                       "تسجيل الدخول",
-                      style: Theme.of(context).textTheme.headline1,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline1!
+                          .copyWith(color: MyThemeData.appblue),
                     ),
                     SizedBox(height: 4.h),
                     // SvgIconViwer(iconPath: AppStrings.egbussSvg),
@@ -70,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                       textController: passwordController,
                       feildText: "كلمه السر",
                       withShadow: true,
-                      userInputType: TextInputType.number,
+                      userInputType: TextInputType.text,
                       action: const Icon(Icons.password_rounded),
                     ),
                     SizedBox(height: 2.5.h),
@@ -78,25 +86,15 @@ class LoginScreen extends StatelessWidget {
                       buttonColor: MyThemeData.appblue,
                       myWidgets: const DefaultButtonText(text: "تسجيل الدخول"),
                       otpressFunction: () {
-                        ScaffoldMessenger.of(context)
+                        /**
+                         ScaffoldMessenger.of(context)
                             .showSnackBar(ErrorSnackBar(
                                 errorText: ConstValidations.loginValidation(
                           phone: phoneNumberController.text,
                           password: passwordController.text,
                         )));
-                        // mycubit.loginUser(
-                        //   UserModel(
-                        //     phone: phoneNumberController.text,
-                        //     password: passwordController.text,
-                        //   ),
-                        // );
-                      },
-                    ),
-                    SizedBox(height: 2.h),
-                    CustomElevatedButton(
-                      myWidgets:
-                          const DefaultButtonText(text: "تسجيل الدخول كزائر"),
-                      otpressFunction: () {
+                         */
+                        isGuest.isGuest = false;
                         mycubit.loginUser(
                           UserModel(
                             phone: phoneNumberController.text,
@@ -105,12 +103,41 @@ class LoginScreen extends StatelessWidget {
                         );
                       },
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(
-                            context, RoutNamesDart.rRegisterScreen);
+                    SizedBox(height: 2.h),
+                    CustomElevatedButton(
+                      myWidgets:
+                          const DefaultButtonText(text: "تسجيل الدخول كزائر"),
+                      otpressFunction: () {
+                        isGuest.isGuest = true;
+                        mycubit.loginUser(
+                          UserModel(
+                            phone: phoneNumberController.text,
+                            password: passwordController.text,
+                          ),
+                        );
                       },
-                      child: Text("انشاء حساب جديد"),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 6.h),
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                                context, RoutNamesDart.rRegisterScreen);
+                          },
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  'ليس لديك حساب؟',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'انشاء حساب جديد',
+                                  style: TextStyle(
+                                      color: MyThemeData.appyellow,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ])),
                     )
                   ],
                 ),
@@ -121,5 +148,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
 }

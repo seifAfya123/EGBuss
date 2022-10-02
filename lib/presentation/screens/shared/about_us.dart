@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
@@ -15,8 +16,11 @@ class AboutUs extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const AppbarTitleText(titleText: "من نحن"),
+        appBar: const CupertinoNavigationBar(
+          leading: CupertinoNavigationBarBackButton(color: Colors.white),
+          backgroundColor: MyThemeData.appblue,
+          middle: AppbarTitleText(titleText: "من نحن"),
+          border: Border(bottom: BorderSide(style: BorderStyle.none)),
         ),
         body: Center(
           child: BodyWhiteContainer(

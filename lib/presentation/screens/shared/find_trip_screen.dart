@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:testapp/constants/app_strings.dart';
+import 'package:testapp/constants/const_test_data.dart';
 import 'package:testapp/presentation/router/rout_names_dart.dart';
 import 'package:testapp/presentation/styles/my_theme_data.dart';
 import 'package:testapp/presentation/view/body_white_container.dart';
 import 'package:sizer/sizer.dart';
 import 'package:testapp/presentation/widget/appbar_title_text.dart';
+import 'package:testapp/presentation/widget/const_widget.dart';
+import 'package:testapp/presentation/widget/custom_drop_down_list.dart';
 import 'package:testapp/presentation/widget/custom_elevated_button.dart';
+import 'package:testapp/presentation/widget/custom_image_container.dart';
+import 'package:testapp/presentation/widget/date_picker_widget.dart';
 import 'package:testapp/presentation/widget/default_button_text.dart';
 import 'package:testapp/presentation/widget/drawer.dart';
 import 'package:testapp/presentation/widget/leaving_and_arriving_card.dart';
@@ -21,6 +27,11 @@ class FindTripScreen extends StatefulWidget {
 
 class _FindTripScreenState extends State<FindTripScreen> {
   bool isOneWayTrip = true;
+  final fromStationEC = TextEditingController();
+  final fromGOVEC = TextEditingController();
+  final toGOVEC = TextEditingController();
+  final toStationEC = TextEditingController();
+  final dateEC = TextEditingController();
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -37,8 +48,9 @@ class _FindTripScreenState extends State<FindTripScreen> {
             withPadding: true,
             bodyChild: Column(
               children: [
-                Expanded(
-                  child: Container(),
+                const Expanded(
+                  child: CustomImageContainer(
+                      imagePath: AppStrings.busImg, withShadow: false),
                 ),
                 Container(
                   height: 9.h,
@@ -61,14 +73,57 @@ class _FindTripScreenState extends State<FindTripScreen> {
                   children: [
                     LeavingAndArrivingCard(
                         isFrom: false,
+                        governrateName: toGOVEC.text,
+                        stationName: toStationEC.text,
                         function: () {
-                          debugPrint("bottomsheet");
+                          // debugPrint("bottomsheet");
+                          ConstWidgets.botomshet(
+                            context,
+                            ListView.builder(
+                              itemCount: stations.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  margin: EdgeInsets.symmetric(vertical: 1.h),
+                                  child: MyDropDownList(
+                                    onChangeFunction: () {
+                                      setState(() {});
+                                    },
+                                    governrateController: toGOVEC,
+                                    stationcontroller: toStationEC,
+                                    items: stations[index].stations,
+                                    title: stations[index].governrate,
+                                  ),
+                                );
+                              },
+                            ),
+                          );
                         }),
                     SizedBox(width: 3.w),
                     LeavingAndArrivingCard(
+                        governrateName: fromGOVEC.text,
+                        stationName: fromStationEC.text,
                         isFrom: true,
                         function: () {
-                          debugPrint("bottomsheet");
+                          ConstWidgets.botomshet(
+                            context,
+                            ListView.builder(
+                              itemCount: stations.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  margin: EdgeInsets.symmetric(vertical: 1.h),
+                                  child: MyDropDownList(
+                                    onChangeFunction: () {
+                                      setState(() {});
+                                    },
+                                    governrateController: fromGOVEC,
+                                    stationcontroller: fromStationEC,
+                                    items: stations[index].stations,
+                                    title: stations[index].governrate,
+                                  ),
+                                );
+                              },
+                            ),
+                          );
                         }),
                   ],
                 ),
@@ -88,10 +143,10 @@ class _FindTripScreenState extends State<FindTripScreen> {
                   myWidgets: const DefaultButtonText(text: "بحث"),
                   otpressFunction: () {
                     Navigator.pushNamed(
-                        context, RoutNamesDart.rSeatReservation);
+                        context, RoutNamesDart.rAvailableTripsScreen);
                   },
                 ),
-                SizedBox(height: 6.h),
+                // SizedBox(height: 6.h),
               ],
             ),
           ),
@@ -103,9 +158,9 @@ class _FindTripScreenState extends State<FindTripScreen> {
   fisrtChild() {
     return Row(
       children: [
-        TripTimePicker(function: () {
-          debugPrint("timepicker");
-        }),
+        DatePickerWidget(
+          text: 'تاريخ المغادرة',
+        ),
       ],
     );
   }
@@ -115,13 +170,11 @@ class _FindTripScreenState extends State<FindTripScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        TripTimePicker(function: () {
-          debugPrint("timepicker");
-        }),
+        DatePickerWidget(text: 'تاريخ المغادرة'),
         SizedBox(width: 3.w),
-        TripTimePicker(function: () {
-          debugPrint("timepicker");
-        }),
+        DatePickerWidget(
+          text: 'تاريخ العودة',
+        )
       ],
     );
   }

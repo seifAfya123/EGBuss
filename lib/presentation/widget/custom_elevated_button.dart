@@ -22,19 +22,24 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 9.h,
       child: ElevatedButton(
         onPressed: otpressFunction,
         style: ElevatedButton.styleFrom(
-          primary: buttonColor,
+          backgroundColor: buttonColor,
           side: BorderSide(
             color: isSelected ?? false
                 ? MyThemeData.appDarkblue
                 : Colors.transparent,
-            width: 0.5.w,
-            
+            width: 0.8.w,
           ),
         ),
-        child: myWidgets,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            myWidgets,
+          ],
+        ),
       ),
     );
   }

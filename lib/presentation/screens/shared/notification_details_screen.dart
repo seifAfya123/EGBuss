@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,8 +23,11 @@ class NotificationDetailsScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const AppbarTitleText(titleText: "الاشعارات"),
+        appBar: const CupertinoNavigationBar(
+          leading: CupertinoNavigationBarBackButton(color: Colors.white),
+          backgroundColor: MyThemeData.appblue,
+          middle: AppbarTitleText(titleText: "الاشعارات"),
+          border: Border(bottom: BorderSide(style: BorderStyle.none)),
         ),
         body: BodyWhiteContainer(
           withPadding: true,
@@ -46,7 +50,7 @@ class NotificationDetailsScreen extends StatelessWidget {
                 ),
                 Spacer(),
 
-                Text("نتمني لكم رحله سغيده"),
+                Text("نتمني لكم رحله سعيده"),
               ],
             ),
           ),

@@ -18,7 +18,8 @@ class BodyWhiteContainer extends StatelessWidget {
       height: double.infinity,
       width: double.infinity,
       padding: EdgeInsets.symmetric(
-          horizontal: withPadding == null || withPadding == false ? 0 : 3.w),
+          horizontal: withPadding == null || withPadding == false ? 0 : 3.w,
+          vertical: withPadding == null || withPadding == false ? 0 : 3.h),
       margin: EdgeInsets.only(top: 1.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(

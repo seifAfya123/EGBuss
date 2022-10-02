@@ -14,11 +14,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: MyThemeData.backGroundColor,
-    ));
-    return SafeArea(
-        child: BlocProvider(
+    return BlocProvider(
       create: (context) => GlobalCubit()
         ..navigate(
           afterSuccess: () {
@@ -45,6 +41,6 @@ class SplashScreen extends StatelessWidget {
           },
         ),
       ),
-    ));
+    );
   }
 }
